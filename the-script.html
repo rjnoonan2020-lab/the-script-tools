@@ -1,1 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Script™ — Job Search Writing Tools</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --navy: #0f1f3d;
+      --navy-mid: #1a3258;
+      --navy-light: #243f6b;
+      --gold: #c9933a;
+      --gold-light: #e8b86d;
+      --cream: #faf8f5;
+      --white: #ffffff;
+      --slate: #64748b;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-soft: #475569;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(15,31,61,0.10);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--navy);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 72px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+    }
+
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .logo-mark span {
+      color: var(--gold);
+    }
+
+    .logo-sub {
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .header-tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 300;
+      letter-spacing: 0.2px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+      padding: 52px 32px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(201,147,58,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .hero-title em {
+      color: var(--gold-light);
+      font-style: normal;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── TABS ── */
+    .tabs-wrap {
+      background: var(--navy);
+      padding: 0 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0;
+      max-width: 940px;
+      margin: 0 auto;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar { display: none; }
+
+    .tab {
+      padding: 16px 22px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+      letter-spacing: 0.2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .tab:hover { color: rgba(255,255,255,0.75); }
+
+    .tab.active {
+      color: var(--white);
+      border-bottom-color: var(--gold);
+    }
+
+    .tab-icon {
+      font-size: 15px;
+    }
+
+    /* ── MAIN ── */
+    .main {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 36px 24px 80px;
+    }
+
+    .panel { display: none; }
+    .panel.active { display: block; animation: fadeIn 0.25s ease; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── TOOL CARD ── */
+    .tool-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .tool-card-header {
+      padding: 24px 28px 20px;
+      border-bottom: 1px solid var(--border);
+      background: #f8fafc;
+    }
+
+    .tool-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .tool-desc {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.55;
+    }
+
+    .tool-body {
+      padding: 26px 28px;
+    }
+
+    /* ── FORM ELEMENTS ── */
+    .field { margin-bottom: 18px; }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 7px;
+      letter-spacing: 0.1px;
+    }
+
+    .field label .req { color: #b91c1c; }
+
+    textarea, input[type="text"], input[type="number"], select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: #fff;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+      appearance: none;
+    }
+
+    textarea { min-height: 140px; resize: vertical; line-height: 1.5; }
+
+    textarea:focus, input:focus, select:focus {
+      border-color: var(--navy-mid);
+      box-shadow: 0 0 0 3px rgba(26,50,88,0.08);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    /* ── BUTTONS ── */
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .btn-primary {
+      padding: 12px 22px;
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      letter-spacing: 0.2px;
+    }
+
+    .btn-primary:hover { background: var(--navy-mid); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; }
+
+    .btn-secondary {
+      padding: 12px 18px;
+      background: #fff;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .btn-secondary:hover { border-color: #94a3b8; background: #f8fafc; }
+    .btn-secondary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* ── STATUS ── */
+    .status-line {
+      font-size: 13px;
+      color: var(--slate);
+      min-height: 20px;
+      margin-top: 10px;
+    }
+
+    .status-line.error { color: #b91c1c; }
+    .status-line.success { color: #0b5a1f; }
+
+    /* ── OUTPUT ── */
+    .output-wrap { margin-top: 24px; }
+
+    .output-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 10px;
+    }
+
+    .output-box {
+      white-space: pre-wrap;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text);
+      min-height: 120px;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .output-placeholder { color: #94a3b8; font-style: italic; }
+
+    .tip {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--slate);
+      line-height: 1.5;
+    }
+
+    /* ── INTERVIEW BUCKETS ── */
+    .bucket {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+    }
+
+    .bucket-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bucket-title::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .bucket ol {
+      margin: 0 0 0 20px;
+      padding: 0;
+    }
+
+    .bucket li {
+      font-size: 14px;
+      line-height: 1.55;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    /* ── COMP TOOL RANGES ── */
+    .ranges-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 600px) { .ranges-grid { grid-template-columns: 1fr; } }
+
+    .range-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .range-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 6px;
+    }
+
+    .range-card-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.4;
+    }
+
+    .confidence-note {
+      font-size: 12px;
+      color: var(--slate);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .position-card {
+      background: #fff9f0;
+      border: 1px solid #f0d9b5;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .position-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .narrative-wrap {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .narrative-heading {
+      font-weight: 800;
+      color: var(--navy);
+      margin: 16px 0 8px;
+    }
+
+    .narrative-para { margin-bottom: 10px; }
+
+    .narrative-ul {
+      margin: 0 0 10px 20px;
+      padding: 0;
+    }
+
+    .narrative-ul li {
+      margin-bottom: 6px;
+    }
+
+    .disclaimer {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--slate);
+      line-height: 1.5;
+      padding: 12px 14px;
+      background: #f8fafc;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 24px 32px;
+      font-size: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark">The Script<span>™</span></div>
+    <div class="logo-sub">Job Search Tools</div>
+  </div>
+  <div class="header-tagline">Powered by Third Act Advisors, LLC</div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Four tools. One place.</div>
+  <h1 class="hero-title">Write smarter.<br><em>Land the role.</em></h1>
+  <p class="hero-desc">AI-assisted tools that reduce writing time and sharpen how you present yourself — from application to offer.</p>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab active" data-tab="cover-letter">
+      <span class="tab-icon">✉️</span> Cover Letter
+    </button>
+    <button class="tab" data-tab="thank-you">
+      <span class="tab-icon">🤝</span> Thank-You Email
+    </button>
+    <button class="tab" data-tab="interview">
+      <span class="tab-icon">💬</span> Interview Questions
+    </button>
+    <button class="tab" data-tab="compensation">
+      <span class="tab-icon">💰</span> Compensation
+    </button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- ── COVER LETTER ── -->
+  <div class="panel active" id="panel-cover-letter">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-title">Cover Letter Creator</div>
+        <div class="tool-desc">Paste the job description and your resume. Click Generate. A tailored cover letter will appear below — review and personalize before sending.</div>
+      </div>
+      <div class="tool-body">
+        <div class="field">
+          <label>Job description <span class="req">*</span></label>
+          <textarea id="cl_job" placeholder="Paste the job description here…"></textarea>
+        </div>
+        <div class="field">
+          <label>Your resume <span class="req">*</span></label>
+          <textarea id="cl_resume" placeholder="Paste your resume here…"></textarea>
+        </div>
+        <div class="btn-row">
+          <button class="btn-primary" id="cl_generate">Generate cover letter</button>
+          <button class="btn-secondary" id="cl_copy" disabled>Copy to clipboard</button>
+          <button class="btn-secondary" id="cl_clear">Clear</button>
+        </div>
+        <div class="status-line" id="cl_status"></div>
+        <div class="output-wrap" id="cl_output_wrap" style="display:none;">
+          <div class="output-label">Your cover letter</div>
+          <div class="output-box" id="cl_output"></div>
+        </div>
+        <div class="tip">Tip: Review and personalize this draft before sending. This tool is designed to reduce writing time and support your thinking, not to replace your personal voice or judgment.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── THANK-YOU EMAIL ── -->
+  <div class="panel" id="panel-thank-you">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-title">Thank-You Email Writer</div>
+        <div class="tool-desc">Paste the job description and your resume, then add one memorable interview detail. Choose a tone and click Generate.</div>
+      </div>
+      <div class="tool-body">
+        <div class="field">
+          <label>Job description <span class="req">*</span></label>
+          <textarea id="ty_job" placeholder="Paste the job description here…"></textarea>
+        </div>
+        <div class="field">
+          <label>Your resume <span class="req">*</span></label>
+          <textarea id="ty_resume" placeholder="Paste your resume here…"></textarea>
+        </div>
+        <div class="field">
+          <label>Memorable interview detail to reference <span class="req">*</span></label>
+          <textarea id="ty_note" style="min-height:100px;" placeholder="Example: They emphasized the need for someone to improve cross-team reporting; I shared how I built a dashboard that reduced weekly prep time by 30%."></textarea>
+        </div>
+        <div class="field" style="max-width:220px;">
+          <label>Tone</label>
+          <select id="ty_tone">
+            <option value="warm" selected>Warm</option>
+            <option value="formal">Formal</option>
+            <option value="energized">Energized</option>
+          </select>
+        </div>
+        <div class="btn-row">
+          <button class="btn-primary" id="ty_generate">Generate thank-you email</button>
+          <button class="btn-secondary" id="ty_copy" disabled>Copy to clipboard</button>
+          <button class="btn-secondary" id="ty_clear">Clear</button>
+        </div>
+        <div class="status-line" id="ty_status"></div>
+        <div class="output-wrap" id="ty_output_wrap" style="display:none;">
+          <div class="output-label">Your thank-you email</div>
+          <div class="output-box" id="ty_output"></div>
+        </div>
+        <div class="tip">Tip: Review and personalize this draft before sending. This tool is designed to reduce writing time and support your thinking, not to replace your personal voice or judgment.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── INTERVIEW QUESTIONS ── -->
+  <div class="panel" id="panel-interview">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-title">Interview Question Generator</div>
+        <div class="tool-desc">Paste a job description (required) and a resume (optional). You'll receive 12 likely interview questions, grouped into three buckets.</div>
+      </div>
+      <div class="tool-body">
+        <div class="field">
+          <label>Role title <span style="font-weight:400;color:var(--slate)">(optional)</span></label>
+          <input type="text" id="iq_roleTitle" placeholder="e.g., Product Manager, Sales Director" />
+        </div>
+        <div class="two-col">
+          <div class="field">
+            <label>Role stage</label>
+            <select id="iq_roleStage">
+              <option value="ic">Individual Contributor</option>
+              <option value="manager">Manager</option>
+              <option value="director" selected>Director</option>
+              <option value="vp">VP</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Seniority lens</label>
+            <select id="iq_seniority">
+              <option value="junior">Junior</option>
+              <option value="mid" selected>Mid</option>
+              <option value="exec">Exec</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Job description <span class="req">*</span></label>
+          <textarea id="iq_jobDescription" placeholder="Paste the job description here…"></textarea>
+        </div>
+        <div class="field">
+          <label>Resume <span style="font-weight:400;color:var(--slate)">(optional)</span></label>
+          <textarea id="iq_resume" placeholder="Paste the resume here (optional)…"></textarea>
+        </div>
+        <div class="btn-row">
+          <button class="btn-primary" id="iq_generate">Generate questions</button>
+          <button class="btn-secondary" id="iq_clear">Clear</button>
+        </div>
+        <div class="status-line" id="iq_status"></div>
+        <div id="iq_output" style="margin-top:20px;"></div>
+        <div class="tip">It is recommended that you further edit these questions to your personal style and voice. This tool reduces prep time and should not be used without review.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── COMPENSATION ── -->
+  <div class="panel" id="panel-compensation">
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-title">Compensation Positioning Tool</div>
+        <div class="tool-desc">Generates a market range estimate and advisory notes based on the criteria you select. This is informational and not a guarantee of compensation.</div>
+      </div>
+      <div class="tool-body">
+        <div class="two-col">
+          <div class="field">
+            <label>Function <span class="req">*</span></label>
+            <select id="cp_function" required>
+              <option value="" disabled selected>Select</option>
+              <option>Sales</option><option>Marketing</option><option>Operations</option>
+              <option>Finance</option><option>HR / People</option><option>Customer Success</option>
+              <option>Product</option><option>IT / Engineering</option><option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Level <span class="req">*</span></label>
+            <select id="cp_level" required>
+              <option value="" disabled selected>Select</option>
+              <option value="IC">Individual Contributor</option>
+              <option value="Manager">Manager</option>
+              <option value="Director">Director</option>
+              <option value="VP">VP</option>
+              <option value="C-Suite">C-Suite</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Years of experience <span class="req">*</span></label>
+            <select id="cp_experience" required>
+              <option value="" disabled selected>Select</option>
+              <option value="0–2 (Entry level / Recent grad)">0–2 (Entry level / Recent grad)</option>
+              <option value="3–7">3–7</option>
+              <option value="8–15">8–15</option>
+              <option value="16–25">16–25</option>
+              <option value="25+">25+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Geography <span class="req">*</span></label>
+            <select id="cp_geography" required>
+              <option value="" disabled selected>Select</option>
+              <option value="High Cost Metro">High Cost Metro (NYC, SF, Boston, Seattle, LA, Chicago)</option>
+              <option value="Major Metro">Major Metro (Austin, Denver, Atlanta, Miami, Dallas, Houston)</option>
+              <option value="Mid Market">Mid Market</option>
+              <option value="Remote National">Remote National</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Industry <span class="req">*</span></label>
+            <select id="cp_industry" required>
+              <option value="" disabled selected>Select</option>
+              <option>SaaS / Cloud</option><option>Enterprise Software</option>
+              <option>Finance / FinTech</option><option>Healthcare / MedTech</option>
+              <option>Cybersecurity</option><option>Manufacturing</option>
+              <option>Consulting / Professional Services</option><option>Retail / Consumer</option>
+              <option>Education / EdTech</option><option>Media</option>
+              <option>Nonprofit</option><option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Company size <span class="req">*</span></label>
+            <select id="cp_companySize" required>
+              <option value="" disabled selected>Select</option>
+              <option>Startup</option><option>Growth Stage</option><option>Enterprise</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Current base salary <span style="font-weight:400;color:var(--slate)">(optional)</span></label>
+            <input type="text" id="cp_currentBase" inputmode="numeric" placeholder="e.g. 120000" />
+          </div>
+          <div class="field">
+            <label>Current total compensation <span style="font-weight:400;color:var(--slate)">(optional)</span></label>
+            <input type="text" id="cp_currentTotal" inputmode="numeric" placeholder="e.g. 155000" />
+          </div>
+          <div class="field">
+            <label>Equity in current package <span style="font-weight:400;color:var(--slate)">(optional)</span></label>
+            <select id="cp_equity">
+              <option value="" disabled selected>Select (optional)</option>
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn-primary" id="cp_generate">Generate compensation report</button>
+          <button class="btn-secondary" id="cp_clear">Clear</button>
+        </div>
+        <div class="status-line" id="cp_status"></div>
+        <div id="cp_output_wrap" style="display:none; margin-top:24px;">
+          <div class="confidence-note" id="cp_confidence"></div>
+          <div class="ranges-grid">
+            <div class="range-card">
+              <div class="range-card-label">Base Salary</div>
+              <div class="range-card-value" id="cp_baseLine">—</div>
+            </div>
+            <div class="range-card">
+              <div class="range-card-label">Total Compensation Estimate</div>
+              <div class="range-card-value" id="cp_totalLine">—</div>
+            </div>
+          </div>
+          <div class="position-card" id="cp_positionWrap" style="display:none;">
+            <div class="position-card-label">Your Market Position Snapshot</div>
+            <div id="cp_positionSummary" style="font-size:14px;line-height:1.65;"></div>
+            <div id="cp_positionNote" style="margin-top:10px;font-size:12px;color:var(--slate);line-height:1.45;"></div>
+          </div>
+          <div class="narrative-wrap" id="cp_report"></div>
+        </div>
+        <div class="disclaimer">Disclaimer: This tool provides generalized market estimates based on aggregated patterns and does not account for every factor that affects compensation. Results are informational only and are not a guarantee of compensation.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>© 2026 Third Act Advisors, LLC &nbsp;·&nbsp; <a href="/privacy-policy">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms-and-conditions">Terms</a></div>
+  <div style="margin-top:6px;">The Script™ is informational only and does not constitute career, legal, or compensation advice.</div>
+</footer>
+
+<script>
+// ── TAB SWITCHING ──
+document.querySelectorAll('.tab').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+// ── COVER LETTER ──
+(function() {
+  var jobEl = document.getElementById('cl_job');
+  var resumeEl = document.getElementById('cl_resume');
+  var btn = document.getElementById('cl_generate');
+  var btnCopy = document.getElementById('cl_copy');
+  var btnClear = document.getElementById('cl_clear');
+  var statusEl = document.getElementById('cl_status');
+  var outputEl = document.getElementById('cl_output');
+  var outputWrap = document.getElementById('cl_output_wrap');
+  var ENDPOINT = 'https://effulgent-marshmallow-334527.netlify.app/.netlify/functions/cover-letter';
+
+  function setLoading(on) {
+    btn.disabled = on;
+    btn.textContent = on ? 'Generating…' : 'Generate cover letter';
+    statusEl.textContent = on ? 'Generating your cover letter…' : '';
+    statusEl.className = 'status-line';
+  }
+
+  function enableCopy(on) { btnCopy.disabled = !on; }
+
+  btnCopy.addEventListener('click', async function() {
+    await navigator.clipboard.writeText(outputEl.textContent);
+    statusEl.textContent = 'Copied to clipboard.';
+    statusEl.className = 'status-line success';
+    setTimeout(function() { statusEl.textContent = ''; }, 1500);
+  });
+
+  btnClear.addEventListener('click', function() {
+    jobEl.value = ''; resumeEl.value = '';
+    outputEl.textContent = '';
+    outputWrap.style.display = 'none';
+    statusEl.textContent = ''; statusEl.className = 'status-line';
+    enableCopy(false);
+    btn.disabled = false;
+    btn.textContent = 'Generate cover letter';
+  });
+
+  btn.addEventListener('click', async function() {
+    var job = jobEl.value.trim();
+    var resume = resumeEl.value.trim();
+    enableCopy(false);
+    if (!job || !resume) {
+      statusEl.textContent = 'Please complete both fields above.';
+      statusEl.className = 'status-line error';
+      return;
+    }
+    setLoading(true);
+    outputWrap.style.display = 'none';
+    try {
+      var resp = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ job, resume })
+      });
+      var data = await resp.json();
+      if (!resp.ok) throw new Error(data.error || 'Request failed');
+      outputEl.textContent = data.coverLetter;
+      outputWrap.style.display = 'block';
+      enableCopy(true);
+      statusEl.textContent = '';
+    } catch(err) {
+      statusEl.textContent = 'Error: ' + err.message;
+      statusEl.className = 'status-line error';
+    } finally {
+      setLoading(false);
+    }
+  });
+})();
+
+// ── THANK-YOU EMAIL ──
+(function() {
+  var jobEl = document.getElementById('ty_job');
+  var resumeEl = document.getElementById('ty_resume');
+  var noteEl = document.getElementById('ty_note');
+  var toneEl = document.getElementById('ty_tone');
+  var btn = document.getElementById('ty_generate');
+  var btnCopy = document.getElementById('ty_copy');
+  var btnClear = document.getElementById('ty_clear');
+  var statusEl = document.getElementById('ty_status');
+  var outputEl = document.getElementById('ty_output');
+  var outputWrap = document.getElementById('ty_output_wrap');
+  var ENDPOINT = 'https://effulgent-marshmallow-334527.netlify.app/.netlify/functions/thank-you';
+
+  function setLoading(on) {
+    btn.disabled = on;
+    btn.textContent = on ? 'Generating…' : 'Generate thank-you email';
+    statusEl.textContent = on ? 'Generating your thank-you email…' : '';
+    statusEl.className = 'status-line';
+  }
+
+  function enableCopy(on) { btnCopy.disabled = !on; }
+
+  btnCopy.addEventListener('click', async function() {
+    await navigator.clipboard.writeText(outputEl.textContent);
+    statusEl.textContent = 'Copied to clipboard.';
+    statusEl.className = 'status-line success';
+    setTimeout(function() { statusEl.textContent = ''; }, 1500);
+  });
+
+  btnClear.addEventListener('click', function() {
+    jobEl.value = ''; resumeEl.value = ''; noteEl.value = '';
+    toneEl.value = 'warm';
+    outputEl.textContent = '';
+    outputWrap.style.display = 'none';
+    statusEl.textContent = ''; statusEl.className = 'status-line';
+    enableCopy(false);
+    btn.disabled = false;
+    btn.textContent = 'Generate thank-you email';
+  });
+
+  btn.addEventListener('click', async function() {
+    var job = jobEl.value.trim();
+    var resume = resumeEl.value.trim();
+    var interviewNote = noteEl.value.trim();
+    var tone = toneEl.value;
+    enableCopy(false);
+    if (!job || !resume || !interviewNote) {
+      statusEl.textContent = 'Please complete all fields above.';
+      statusEl.className = 'status-line error';
+      return;
+    }
+    setLoading(true);
+    outputWrap.style.display = 'none';
+    try {
+      var resp = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ job, resume, interviewNote, tone })
+      });
+      var data = await resp.json();
+      if (!resp.ok) throw new Error(data.error || 'Request failed');
+      outputEl.textContent = data.thankYouEmail;
+      outputWrap.style.display = 'block';
+      enableCopy(true);
+      statusEl.textContent = '';
+    } catch(err) {
+      statusEl.textContent = 'Error: ' + err.message;
+      statusEl.className = 'status-line error';
+    } finally {
+      setLoading(false);
+    }
+  });
+})();
+
+// ── INTERVIEW QUESTIONS ──
+(function() {
+  var btn = document.getElementById('iq_generate');
+  var btnClear = document.getElementById('iq_clear');
+  var statusEl = document.getElementById('iq_status');
+  var outputEl = document.getElementById('iq_output');
+  var ENDPOINT = 'https://effulgent-marshmallow-334527.netlify.app/.netlify/functions/generate-interview-questions';
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, function(m) {
+      return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;' })[m];
+    });
+  }
+
+  function render(data) {
+    outputEl.innerHTML = (data.buckets || []).map(function(b) {
+      return '<div class="bucket"><div class="bucket-title">' + escapeHtml(b.bucket_name || '') + '</div><ol>' +
+        (b.questions || []).map(function(q) { return '<li>' + escapeHtml(q) + '</li>'; }).join('') +
+        '</ol></div>';
+    }).join('');
+  }
+
+  btnClear.addEventListener('click', function() {
+    document.getElementById('iq_roleTitle').value = '';
+    document.getElementById('iq_roleStage').value = 'director';
+    document.getElementById('iq_seniority').value = 'mid';
+    document.getElementById('iq_jobDescription').value = '';
+    document.getElementById('iq_resume').value = '';
+    outputEl.innerHTML = '';
+    statusEl.textContent = ''; statusEl.className = 'status-line';
+    btn.disabled = false; btn.textContent = 'Generate questions';
+  });
+
+  btn.addEventListener('click', async function() {
+    var jobDescription = document.getElementById('iq_jobDescription').value.trim();
+    if (!jobDescription) {
+      statusEl.textContent = 'Please paste a job description.';
+      statusEl.className = 'status-line error';
+      return;
+    }
+    btn.disabled = true; btn.textContent = 'Generating…';
+    statusEl.textContent = 'Generating interview questions…';
+    statusEl.className = 'status-line';
+    outputEl.innerHTML = '';
+    try {
+      var payload = {
+        jobDescription: jobDescription,
+        resume: document.getElementById('iq_resume').value.trim(),
+        roleTitle: document.getElementById('iq_roleTitle').value.trim(),
+        roleStage: document.getElementById('iq_roleStage').value,
+        seniority: document.getElementById('iq_seniority').value
+      };
+      var res = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      var raw = await res.text();
+      var data = {};
+      try { data = JSON.parse(raw); } catch(e) { data = { error: raw }; }
+      if (!res.ok) throw new Error(data.error || 'Request failed (' + res.status + ')');
+      statusEl.textContent = ''; statusEl.className = 'status-line';
+      render(data);
+    } catch(e) {
+      statusEl.textContent = e.message || String(e);
+      statusEl.className = 'status-line error';
+    } finally {
+      btn.disabled = false; btn.textContent = 'Generate questions';
+    }
+  });
+})();
+
+// ── COMPENSATION ──
+(function() {
+  var ENDPOINT = 'https://effulgent-marshmallow-334527.netlify.app/.netlify/functions/generate-comp-positioning';
+  var statusEl = document.getElementById('cp_status');
+  var outputWrap = document.getElementById('cp_output_wrap');
+  var reportEl = document.getElementById('cp_report');
+  var baseLineEl = document.getElementById('cp_baseLine');
+  var totalLineEl = document.getElementById('cp_totalLine');
+  var confidenceEl = document.getElementById('cp_confidence');
+  var positionWrap = document.getElementById('cp_positionWrap');
+  var positionSummaryEl = document.getElementById('cp_positionSummary');
+  var positionNoteEl = document.getElementById('cp_positionNote');
+  var btn = document.getElementById('cp_generate');
+  var el = function(id) { return document.getElementById(id); };
+
+  var sanitizeMoney = function(v) {
+    if (!v) return '';
+    var n = String(v).replace(/[^0-9]/g, '');
+    return n ? Number(n) : '';
+  };
+
+  var formatUSD = function(n) {
+    var num = Number(n);
+    if (!isFinite(num)) return '';
+    return num.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+  };
+
+  var rangeLine = function(r) {
+    if (!r || !isFinite(r.low) || !isFinite(r.mid) || !isFinite(r.high)) return '';
+    return formatUSD(r.low) + ' to ' + formatUSD(r.high) + ' (midpoint ' + formatUSD(r.mid) + ')';
+  };
+
+  var pctVsMid = function(current, mid) {
+    var c = Number(current), m = Number(mid);
+    if (!isFinite(c) || !isFinite(m) || m === 0) return null;
+    return ((c - m) / m) * 100;
+  };
+
+  var positionInBand = function(current, low, high) {
+    var c = Number(current), lo = Number(low), hi = Number(high);
+    if (!isFinite(c) || !isFinite(lo) || !isFinite(hi) || hi === lo) return null;
+    return (c - lo) / (hi - lo);
+  };
+
+  var clamp01 = function(x) { return Math.max(0, Math.min(1, x)); };
+
+  var describeBand = function(p) {
+    if (p === null) return '';
+    if (p < 0) return 'below the estimated market range';
+    if (p > 1) return 'above the estimated market range';
+    return 'within the estimated market range';
+  };
+
+  var approxPercentileText = function(p) {
+    if (p === null) return '';
+    if (p < 0) return 'below the range';
+    if (p > 1) return 'above the range';
+    var pct = Math.round(clamp01(p) * 100);
+    return 'around the ' + pct + 'th percentile of this estimated band';
+  };
+
+  var formatPct = function(x) {
+    if (x === null || !isFinite(x)) return '';
+    var rounded = Math.round(x);
+    if (rounded === 0) return '0%';
+    return (rounded > 0 ? '+' : '') + rounded + '%';
+  };
+
+  var escapeHtml = function(value) {
+    return String(value || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+  };
+
+  var BOLD_HEADINGS = new Set(['market context','why this range moves','questions to clarify','reminder']);
+  var normalize = function(s) { return String(s || '').replace(/\s+/g,' ').trim().toLowerCase(); };
+
+  var renderNarrative = function(text) {
+    var raw = String(text || '').trim();
+    if (!raw) return '<div style="color:#64748b;">No narrative returned.</div>';
+    var lines = raw.split(/\r?\n/);
+    var html = '';
+    var bulletsOpen = false;
+    var closeBullets = function() { if (bulletsOpen) { html += '</ul>'; bulletsOpen = false; } };
+    lines.forEach(function(lineRaw) {
+      var line = String(lineRaw || '').trim();
+      if (!line) { closeBullets(); return; }
+      if (BOLD_HEADINGS.has(normalize(line))) {
+        closeBullets();
+        html += '<div class="narrative-heading">' + escapeHtml(line) + '</div>';
+        return;
+      }
+      if (line.startsWith('- ')) {
+        var bulletText = line.slice(2).trim();
+        if (!bulletsOpen) { html += '<ul class="narrative-ul">'; bulletsOpen = true; }
+        html += '<li>' + escapeHtml(bulletText) + '</li>';
+        return;
+      }
+      closeBullets();
+      html += '<div class="narrative-para">' + escapeHtml(line) + '</div>';
+    });
+    closeBullets();
+    return html;
+  };
+
+  var computeConfidence = function(payload) {
+    var hasCurrent = !!payload.currentBase || !!payload.currentTotal;
+    var senior = payload.level === 'VP' || payload.level === 'C-Suite' || String(payload.experience || '').includes('16') || String(payload.experience || '').includes('25');
+    var depth = hasCurrent ? 'higher' : 'moderate';
+    var variability = senior ? 'higher variability at senior levels' : 'normal variability';
+    return 'Confidence note: This estimate is a midpoint-oriented range with ' + variability + '. Confidence is ' + depth + ' when you include current comp inputs and accurate scope context.';
+  };
+
+  var renderPositionSnapshot = function(payload, data) {
+    positionWrap.style.display = 'none';
+    positionSummaryEl.innerHTML = '';
+    positionNoteEl.textContent = '';
+    var cb = payload.currentBase, ct = payload.currentTotal, eq = payload.equity;
+    var baseRange = data && data.ranges && data.ranges.base;
+    var totalRange = data && data.ranges && data.ranges.total;
+    var hasBase = isFinite(cb) && cb > 0;
+    var hasTotal = isFinite(ct) && ct > 0;
+    if (!hasBase && !hasTotal) return;
+    var lines = [];
+    if (hasBase && baseRange && isFinite(baseRange.mid)) {
+      var pct = pctVsMid(cb, baseRange.mid);
+      var bandPos = positionInBand(cb, baseRange.low, baseRange.high);
+      lines.push('<div style="margin:0 0 6px 0;"><strong>Current base vs market midpoint:</strong> ' + formatPct(pct) + ' (' + describeBand(bandPos) + ', ' + approxPercentileText(bandPos) + ')</div>');
+    } else if (hasBase) {
+      lines.push('<div style="margin:0 0 6px 0;"><strong>Current base:</strong> ' + formatUSD(cb) + ' (comparison not available)</div>');
+    }
+    if (hasTotal && totalRange && isFinite(totalRange.mid)) {
+      var pct2 = pctVsMid(ct, totalRange.mid);
+      var bandPos2 = positionInBand(ct, totalRange.low, totalRange.high);
+      lines.push('<div style="margin:0 0 6px 0;"><strong>Current total vs market midpoint:</strong> ' + formatPct(pct2) + ' (' + describeBand(bandPos2) + ', ' + approxPercentileText(bandPos2) + ')</div>');
+    } else if (hasTotal) {
+      lines.push('<div style="margin:0 0 6px 0;"><strong>Current total:</strong> ' + formatUSD(ct) + ' (comparison not available)</div>');
+    }
+    if (eq === 'Yes') lines.push('<div style="margin:10px 0 0 0;"><strong>Equity note:</strong> Equity can materially change total value, but its realized value depends on terms, vesting, and liquidity.</div>');
+    positionSummaryEl.innerHTML = lines.join('');
+    positionNoteEl.textContent = 'This comparison assumes similar role scope and performance expectations. Use this as a directional signal, not a guarantee.';
+    positionWrap.style.display = 'block';
+  };
+
+  btn.addEventListener('click', async function() {
+    var requiredFields = ['cp_function','cp_level','cp_experience','cp_geography','cp_industry','cp_companySize'];
+    var missing = requiredFields.some(function(id) { return !el(id).value; });
+    if (missing) {
+      statusEl.textContent = 'Please complete all required fields.';
+      statusEl.className = 'status-line error';
+      return;
+    }
+    outputWrap.style.display = 'none';
+    positionWrap.style.display = 'none';
+    reportEl.innerHTML = '';
+    statusEl.textContent = 'Generating report…';
+    statusEl.className = 'status-line';
+    btn.disabled = true; btn.textContent = 'Generating…';
+
+    var payload = {
+      functionGroup: el('cp_function').value,
+      level: el('cp_level').value,
+      experience: el('cp_experience').value,
+      geography: el('cp_geography').value,
+      industry: el('cp_industry').value,
+      companySize: el('cp_companySize').value,
+      currentBase: sanitizeMoney(el('cp_currentBase').value) || '',
+      currentTotal: sanitizeMoney(el('cp_currentTotal').value) || '',
+      equity: el('cp_equity').value || ''
+    };
+
+    try {
+      var controller = new AbortController();
+      var timeout = setTimeout(function() { controller.abort(); }, 20000);
+      var res = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+      clearTimeout(timeout);
+      var raw = await res.text();
+      var data;
+      try { data = JSON.parse(raw); } catch(e) { throw new Error('Backend returned non-JSON. First characters: ' + raw.slice(0,200)); }
+      if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
+
+      baseLineEl.textContent = rangeLine(data.ranges && data.ranges.base) || '—';
+      totalLineEl.textContent = rangeLine(data.ranges && data.ranges.total) || '—';
+      confidenceEl.textContent = computeConfidence(payload);
+      renderPositionSnapshot(payload, data);
+      reportEl.innerHTML = renderNarrative(data.narrative);
+      outputWrap.style.display = 'block';
+      statusEl.textContent = 'Report generated.';
+      statusEl.className = 'status-line success';
+    } catch(err) {
+      statusEl.textContent = 'Something went wrong: ' + (err && err.message ? err.message : String(err));
+      statusEl.className = 'status-line error';
+    } finally {
+      btn.disabled = false; btn.textContent = 'Generate compensation report';
+    }
+  });
+
+  el('cp_clear').addEventListener('click', function() {
+    ['cp_function','cp_level','cp_experience','cp_geography','cp_industry','cp_companySize','cp_equity'].forEach(function(id) {
+      var s = el(id); if (s) s.selectedIndex = 0;
+    });
+    el('cp_currentBase').value = ''; el('cp_currentTotal').value = '';
+    statusEl.textContent = ''; statusEl.className = 'status-line';
+    outputWrap.style.display = 'none';
+    reportEl.innerHTML = '';
+    positionWrap.style.display = 'none';
+  });
+})();
+</script>
+</body>
+</html>
