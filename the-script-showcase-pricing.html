@@ -75,10 +75,9 @@
       font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px;
     }
     .tier-name { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--slate); margin-bottom: 8px; }
-    .tier-title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-    .tier-price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 10px; }
-    .tier-price .amount { font-size: 38px; font-weight: 800; color: var(--navy); letter-spacing: -1px; }
-    .tier-price .per { font-size: 14px; color: var(--slate); font-weight: 500; }
+    .tier-title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .tier-price { font-size: 32px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+    .tier-price span { font-size: 14px; font-weight: 500; color: var(--slate); }
     .tier-desc { font-size: 13.5px; color: var(--slate); line-height: 1.6; }
     .tier-body { padding: 26px 30px; }
     .tier-features { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 28px; }
@@ -166,14 +165,16 @@
   </style>
 </head>
 <body>
+
   <header>
     <div class="header-logo">The Script<span>™</span></div>
     <div class="header-tag">Powered by Third Act Advisors, LLC</div>
-    <a href="mailto:rob@thirdactadvisors.com" class="header-cta">Get Started</a>
+    <a href="mailto:rob@thirdactadvisors.com" class="header-cta">Explore Coaching</a>
   </header>
+
   <div class="hero">
     <div class="hero-rule"></div>
-    <h1>Job Search Tools<br>for <em>Your</em> Candidates</h1>
+    <h1>Simple, Transparent<br><em>Pricing</em></h1>
     <p>One line of code gives your candidates AI-powered tools that help them land interviews, ace the process, and negotiate confidently.</p>
     <div class="hero-pills">
       <div class="hero-pill">✉️ Cover Letter Creator</div>
@@ -181,8 +182,9 @@
       <div class="hero-pill">💬 Interview Question Generator</div>
       <div class="hero-pill">💰 Compensation Positioning</div>
     </div>
-    <div class="hero-scroll">See plans & pricing</div>
+    <div class="hero-scroll">See the plans</div>
   </div>
+
   <div class="how-section">
     <div style="max-width:1200px; margin:0 auto;">
       <div class="section-header">
@@ -194,7 +196,7 @@
         <div class="step">
           <div class="step-num">1</div>
           <h4>Choose your plan</h4>
-          <p>Pick Starter for the out-of-the-box experience, or Professional for your own brand colors and logo.</p>
+          <p>Pick the out-of-the-box experience, or go fully white-labeled with your own brand colors and logo.</p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
@@ -209,21 +211,21 @@
       </div>
     </div>
   </div>
+
   <div class="section">
     <div class="section-header">
-      <div class="eyebrow">Pricing</div>
-      <h2>Two Simple Plans</h2>
-      <p>Both include all four AI tools, unlimited usage, and free updates. No contracts. Cancel anytime.</p>
+      <div class="eyebrow">Two Plans</div>
+      <h2>As-Built or White-Label</h2>
+      <p>Use The Script™ as-is, or customize it to match your firm's brand. Either way, your candidates win.</p>
     </div>
     <div class="tiers">
+
+      <!-- STARTER -->
       <div class="tier-card">
         <div class="tier-header">
           <div class="tier-name">Starter</div>
           <div class="tier-title">The Script™ as-built</div>
-          <div class="tier-price">
-            <span class="amount">$49</span>
-            <span class="per">/ month</span>
-          </div>
+          <div class="tier-price">$49<span>/mo</span></div>
           <div class="tier-desc">Everything your candidates need, ready to go. Navy and gold branding, zero setup beyond one line of code.</div>
         </div>
         <div class="tier-body">
@@ -251,18 +253,17 @@
               <div class="mock-fab-text">The Script<span>™</span></div>
             </div>
           </div>
-          <a href="mailto:rob@thirdactadvisors.com?subject=The Script - Starter Plan $49/mo" class="tier-btn tier-btn-secondary">Get started — $49/mo</a>
+          <a href="mailto:rob@thirdactadvisors.com?subject=The Script - Starter Plan" class="tier-btn tier-btn-secondary">Get started — $49/mo →</a>
         </div>
       </div>
+
+      <!-- PROFESSIONAL -->
       <div class="tier-card featured">
         <div class="tier-header">
           <div class="tier-badge">Most Popular</div>
           <div class="tier-name">Professional</div>
           <div class="tier-title">Your Brand, Your Tools</div>
-          <div class="tier-price">
-            <span class="amount">$99</span>
-            <span class="per">/ month</span>
-          </div>
+          <div class="tier-price">$99<span>/mo</span></div>
           <div class="tier-desc">Full white-label experience. Your colors, your logo, your brand. Candidates see your firm — not ours.</div>
         </div>
         <div class="tier-body">
@@ -297,17 +298,20 @@
               <div class="mock-fab-text" id="pro-fab-text">Your Firm<span style="color:#fde68a">™</span></div>
             </div>
           </div>
-          <a href="mailto:rob@thirdactadvisors.com?subject=The Script - Professional Plan $99/mo - 14-day trial" class="tier-btn tier-btn-primary">Start free trial — $99/mo</a>
+          <a href="mailto:rob@thirdactadvisors.com?subject=The Script - Professional Plan" class="tier-btn tier-btn-primary">Start free trial — $99/mo →</a>
         </div>
       </div>
+
     </div>
   </div>
+
   <div class="closing-section">
     <div class="eyebrow">One line of code</div>
     <h2>This is all it takes</h2>
     <p>Drop a single script tag into your website before the closing &lt;/body&gt; tag. That's it.</p>
-    <a href="mailto:rob@thirdactadvisors.com?subject=The Script - Ready to Get Started" class="closing-cta">Get started today →</a>
+    <a href="mailto:rob@thirdactadvisors.com?subject=The Script - Get Started" class="closing-cta">Get started today →</a>
   </div>
+
   <footer>
     <div class="footer-logo">Third Act Advisors<span>™</span></div>
     <div class="footer-contact">
@@ -316,6 +320,7 @@
       <a href="https://thirdactadvisors.com" target="_blank">thirdactadvisors.com</a>
     </div>
   </footer>
+
   <script>
     var COLORS = {
       blue:   { bg: '#1d4ed8', dot: '#f59e0b', text: '#fde68a' },
@@ -334,5 +339,13 @@
       });
     }
   </script>
+
+  <!-- THE SCRIPT™ LIVE WIDGET -->
+  <script
+    src="https://neon-cupcake-f92497.netlify.app/the-script-widget.js"
+    data-firm="Third Act Advisors"
+    data-color="#c9933a">
+  </script>
+
 </body>
 </html>
