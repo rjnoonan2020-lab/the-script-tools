@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Script™ — Job Search Tools for Your Candidates</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d; --navy-mid: #1a3258;
+      --gold: #c9933a; --gold-light: #e8b86d; --gold-pale: #fdf6ec;
+      --cream: #faf8f5; --border: #e2e8f0; --slate: #64748b; --text: #0f172a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+    header {
+      background: var(--navy); padding: 0 48px; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 900;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .header-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+    .header-logo span { color: var(--gold-light); }
+    .header-tag { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; font-weight: 500; }
+    .header-cta {
+      background: var(--gold); color: #fff; padding: 9px 22px; border-radius: 8px;
+      font-size: 13px; font-weight: 700; text-decoration: none; letter-spacing: 0.2px; transition: background 0.15s;
+    }
+    .header-cta:hover { background: #b07d28; }
+    .hero {
+      background: var(--navy); padding: 90px 48px 80px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,147,58,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-rule { width: 40px; height: 2px; background: var(--gold); margin: 0 auto 24px; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif; font-size: 54px; font-weight: 900; color: #fff;
+      line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 20px;
+    }
+    .hero h1 em { color: var(--gold-light); font-style: italic; }
+    .hero p { font-size: 18px; color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto 40px; line-height: 1.65; font-weight: 300; }
+    .hero-pills { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .hero-pill {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px; padding: 6px 14px; font-size: 12.5px; color: rgba(255,255,255,0.7); font-weight: 500;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .hero-scroll {
+      font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 1px;
+      text-transform: uppercase; display: flex; align-items: center; gap: 8px; justify-content: center;
+    }
+    .hero-scroll::after { content: '↓'; animation: bounce 1.8s ease-in-out infinite; }
+    @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(4px);} }
+    .section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .section-header h2 { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 900; letter-spacing: -1px; color: var(--navy); margin-bottom: 14px; }
+    .section-header p { font-size: 16px; color: var(--slate); max-width: 520px; margin: 0 auto; line-height: 1.65; }
+    .tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .tier-card {
+      background: #fff; border: 1.5px solid var(--border); border-radius: 20px;
+      overflow: hidden; transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .tier-card:hover { box-shadow: 0 16px 48px rgba(15,31,61,0.1); transform: translateY(-3px); }
+    .tier-card.featured { border-color: var(--gold); box-shadow: 0 8px 32px rgba(201,147,58,0.15); }
+    .tier-header { padding: 28px 30px 22px; border-bottom: 1px solid var(--border); position: relative; }
+    .tier-card.featured .tier-header { background: var(--gold-pale); border-bottom-color: #f0d9b5; }
+    .tier-badge {
+      position: absolute; top: 20px; right: 20px; background: var(--gold); color: #fff;
+      font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px;
+    }
+    .tier-name { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--slate); margin-bottom: 8px; }
+    .tier-title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .tier-desc { font-size: 13.5px; color: var(--slate); line-height: 1.6; }
+    .tier-body { padding: 26px 30px; }
+    .tier-features { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 28px; }
+    .tier-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: #334155; line-height: 1.45; }
+    .tier-features li .check {
+      width: 18px; height: 18px; border-radius: 50%; background: #dcfce7; color: #166534;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 800; flex-shrink: 0; margin-top: 1px;
+    }
+    .tier-features li .x {
+      width: 18px; height: 18px; border-radius: 50%; background: #f1f5f9; color: #94a3b8;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 800; flex-shrink: 0; margin-top: 1px;
+    }
+    .tier-features li span { color: var(--slate); }
+    .tier-demo-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--slate); margin-bottom: 12px; }
+    .widget-preview {
+      background: #f8fafc; border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px; margin-bottom: 22px;
+      position: relative; min-height: 120px;
+    }
+    .mock-site-lines { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+    .mock-line { height: 8px; border-radius: 4px; background: #e2e8f0; }
+    .mock-line.short { width: 55%; }
+    .mock-line.med { width: 75%; }
+    .mock-line.long { width: 90%; }
+    .mock-fab {
+      position: absolute; bottom: 16px; right: 16px; height: 42px; border-radius: 24px;
+      background: var(--navy); display: flex; align-items: center; gap: 8px;
+      padding: 0 16px 0 8px; box-shadow: 0 4px 14px rgba(15,31,61,0.3);
+    }
+    .mock-fab-dot {
+      width: 26px; height: 26px; border-radius: 50%; background: var(--gold);
+      display: flex; align-items: center; justify-content: center; font-size: 11px;
+    }
+    .mock-fab-text { font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 700; color: #fff; }
+    .mock-fab-text span { color: var(--gold-light); }
+    .color-swatches { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+    .swatch { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: transform 0.12s; }
+    .swatch:hover { transform: scale(1.15); }
+    .swatch.active { border-color: var(--navy); }
+    .tier-btn {
+      display: block; width: 100%; padding: 13px; border-radius: 10px; text-align: center;
+      font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.15s;
+      cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; letter-spacing: 0.2px;
+    }
+    .tier-btn-primary { background: var(--navy); color: #fff; }
+    .tier-btn-primary:hover { background: var(--navy-mid); }
+    .tier-btn-secondary { background: #fff; color: var(--navy); border: 2px solid var(--border); }
+    .tier-btn-secondary:hover { border-color: var(--navy); }
+    .how-section { background: #fff; padding: 80px 48px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 860px; margin: 0 auto; }
+    .step { text-align: center; }
+    .step-num {
+      width: 48px; height: 48px; border-radius: 50%; background: var(--navy); color: #fff;
+      font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
+    }
+    .step h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .step p { font-size: 13px; color: var(--slate); line-height: 1.6; }
+    .closing-section { background: var(--navy); padding: 72px 48px; text-align: center; }
+    .closing-section .eyebrow { color: var(--gold-light); }
+    .closing-section h2 { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 900; color: #fff; letter-spacing: -1px; margin-bottom: 14px; }
+    .closing-section p { font-size: 16px; color: rgba(255,255,255,0.5); max-width: 520px; margin: 0 auto 32px; line-height: 1.65; }
+    .closing-cta {
+      display: inline-block; background: var(--gold); color: #fff;
+      padding: 14px 32px; border-radius: 10px; font-size: 15px; font-weight: 700;
+      text-decoration: none; transition: background 0.15s;
+    }
+    .closing-cta:hover { background: #b07d28; }
+    footer { background: var(--navy); padding: 36px 48px; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 18px; color: #fff; font-weight: 700; margin-bottom: 10px; }
+    .footer-logo span { color: var(--gold-light); }
+    .footer-contact { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.8; }
+    .footer-contact a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    .footer-contact a:hover { color: var(--gold-light); }
+    @media (max-width: 800px) {
+      .tiers { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; max-width: 400px; }
+      .hero h1 { font-size: 36px; }
+      .section, .how-section, .closing-section { padding: 60px 24px; }
+      header { padding: 0 24px; }
+      .hero { padding: 70px 24px 60px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-logo">The Script<span>™</span></div>
+    <div class="header-tag">Powered by Third Act Advisors, LLC</div>
+    <a href="mailto:rob@thirdactadvisors.com" class="header-cta">Get in Touch</a>
+  </header>
+  <div class="hero">
+    <div class="hero-rule"></div>
+    <h1>Job Search Tools<br>for <em>Your</em> Candidates</h1>
+    <p>One line of code gives your candidates AI-powered tools that help them land interviews, ace the process, and negotiate confidently.</p>
+    <div class="hero-pills">
+      <div class="hero-pill">✉️ Cover Letter Creator</div>
+      <div class="hero-pill">🤝 Thank-You Email Writer</div>
+      <div class="hero-pill">💬 Interview Question Generator</div>
+      <div class="hero-pill">💰 Compensation Positioning</div>
+    </div>
+    <div class="hero-scroll">See it in action</div>
+  </div>
+  <div class="how-section">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="section-header">
+        <div class="eyebrow">Setup in minutes</div>
+        <h2>Ridiculously Easy to Deploy</h2>
+        <p>No developer needed. No app to install. Just paste one line of code into your website.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h4>Choose your plan</h4>
+          <p>Pick the out-of-the-box experience, or go fully white-labeled with your own brand colors and logo.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h4>Paste one line of code</h4>
+          <p>Drop a single script tag into your website's HTML — before the closing &lt;/body&gt; tag.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h4>Your candidates use it instantly</h4>
+          <p>The Script™ button appears on your site. Candidates click, use the tools, land offers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header">
+      <div class="eyebrow">Two Options</div>
+      <h2>As-Built or White-Label</h2>
+      <p>Use The Script™ as-is, or customize it to match your firm's brand. Either way, your candidates win.</p>
+    </div>
+    <div class="tiers">
+      <div class="tier-card">
+        <div class="tier-header">
+          <div class="tier-name">Standard</div>
+          <div class="tier-title">The Script™ as-built</div>
+          <div class="tier-desc">Everything your candidates need, ready to go. Navy and gold branding, zero setup beyond one line of code.</div>
+        </div>
+        <div class="tier-body">
+          <ul class="tier-features">
+            <li><span class="check">✓</span> All four AI-powered tools</li>
+            <li><span class="check">✓</span> Unlimited candidate usage</li>
+            <li><span class="check">✓</span> Slide-in panel widget</li>
+            <li><span class="check">✓</span> The Script™ navy & gold branding</li>
+            <li><span class="check">✓</span> Your firm name in the panel header</li>
+            <li><span class="check">✓</span> "Powered by Third Act Advisors" footer</li>
+            <li><span class="x">✕</span> <span>Custom brand colors</span></li>
+            <li><span class="x">✕</span> <span>Your logo in the panel</span></li>
+            <li><span class="x">✕</span> <span>White-label (no TAA branding)</span></li>
+          </ul>
+          <div class="tier-demo-label">Preview</div>
+          <div class="widget-preview">
+            <div class="mock-site-lines">
+              <div class="mock-line long"></div>
+              <div class="mock-line med"></div>
+              <div class="mock-line short"></div>
+              <div class="mock-line med"></div>
+            </div>
+            <div class="mock-fab">
+              <div class="mock-fab-dot">✏️</div>
+              <div class="mock-fab-text">The Script<span>™</span></div>
+            </div>
+          </div>
+          <a href="mailto:rob@thirdactadvisors.com?subject=The Script - Standard Option" class="tier-btn tier-btn-secondary">Learn more →</a>
+        </div>
+      </div>
+      <div class="tier-card featured">
+        <div class="tier-header">
+          <div class="tier-badge">Most Popular</div>
+          <div class="tier-name">Professional</div>
+          <div class="tier-title">Your Brand, Your Tools</div>
+          <div class="tier-desc">Full white-label experience. Your colors, your logo, your brand. Candidates see your firm — not ours.</div>
+        </div>
+        <div class="tier-body">
+          <ul class="tier-features">
+            <li><span class="check">✓</span> All four AI-powered tools</li>
+            <li><span class="check">✓</span> Unlimited candidate usage</li>
+            <li><span class="check">✓</span> Slide-in panel widget</li>
+            <li><span class="check">✓</span> <strong>Custom brand colors</strong></li>
+            <li><span class="check">✓</span> <strong>Your logo in the panel header</strong></li>
+            <li><span class="check">✓</span> <strong>White-label — no TAA branding</strong></li>
+            <li><span class="check">✓</span> Your firm name prominently displayed</li>
+            <li><span class="check">✓</span> Priority support</li>
+            <li><span class="check">✓</span> 14-day free trial</li>
+          </ul>
+          <div class="tier-demo-label">Preview — click a color to try it</div>
+          <div class="color-swatches">
+            <div class="swatch active" style="background:#1d4ed8;" data-color="blue" onclick="setColor('blue')"></div>
+            <div class="swatch" style="background:#0f766e;" data-color="teal" onclick="setColor('teal')"></div>
+            <div class="swatch" style="background:#7c3aed;" data-color="purple" onclick="setColor('purple')"></div>
+            <div class="swatch" style="background:#b91c1c;" data-color="red" onclick="setColor('red')"></div>
+            <div class="swatch" style="background:#0f172a;" data-color="dark" onclick="setColor('dark')"></div>
+          </div>
+          <div class="widget-preview">
+            <div class="mock-site-lines">
+              <div class="mock-line long"></div>
+              <div class="mock-line med"></div>
+              <div class="mock-line short"></div>
+              <div class="mock-line med"></div>
+            </div>
+            <div class="mock-fab" id="pro-fab" style="background:#1d4ed8;">
+              <div class="mock-fab-dot" id="pro-fab-dot" style="background:#f59e0b;">✏️</div>
+              <div class="mock-fab-text" id="pro-fab-text">Your Firm<span style="color:#fde68a">™</span></div>
+            </div>
+          </div>
+          <a href="mailto:rob@thirdactadvisors.com?subject=The Script - Professional Option" class="tier-btn tier-btn-primary">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="closing-section">
+    <div class="eyebrow">One line of code</div>
+    <h2>This is all it takes</h2>
+    <p>Drop a single script tag into your website before the closing &lt;/body&gt; tag. That's it.</p>
+    <a href="mailto:rob@thirdactadvisors.com?subject=The Script - Let's Talk" class="closing-cta">Let's talk →</a>
+  </div>
+  <footer>
+    <div class="footer-logo">Third Act Advisors<span>™</span></div>
+    <div class="footer-contact">
+      <a href="mailto:rob@thirdactadvisors.com">rob@thirdactadvisors.com</a> &nbsp;·&nbsp;
+      <a href="tel:6305175967">(630) 517-5967</a> &nbsp;·&nbsp;
+      <a href="https://thirdactadvisors.com" target="_blank">thirdactadvisors.com</a>
+    </div>
+  </footer>
+  <script>
+    var COLORS = {
+      blue:   { bg: '#1d4ed8', dot: '#f59e0b', text: '#fde68a' },
+      teal:   { bg: '#0f766e', dot: '#fbbf24', text: '#fde68a' },
+      purple: { bg: '#7c3aed', dot: '#f59e0b', text: '#fde68a' },
+      red:    { bg: '#b91c1c', dot: '#fbbf24', text: '#fde68a' },
+      dark:   { bg: '#0f172a', dot: '#c9933a', text: '#e8b86d' },
+    };
+    function setColor(key) {
+      var c = COLORS[key];
+      document.getElementById('pro-fab').style.background = c.bg;
+      document.getElementById('pro-fab-dot').style.background = c.dot;
+      document.getElementById('pro-fab-text').querySelector('span').style.color = c.text;
+      document.querySelectorAll('.swatch').forEach(function(s) {
+        s.classList.toggle('active', s.getAttribute('data-color') === key);
+      });
+    }
+  </script>
+</body>
+</html>
