@@ -1,7 +1,6 @@
 (function () {
   'use strict';
 
-  // ── CONFIG ──
   var script = document.currentScript || (function () {
     var scripts = document.getElementsByTagName('script');
     return scripts[scripts.length - 1];
@@ -20,7 +19,6 @@
 
   var ENDPOINT  = 'https://effulgent-marshmallow-334527.netlify.app/.netlify/functions/';
 
-  // ── FONTS ──
   if (!document.getElementById('ts-font')) {
     var link = document.createElement('link');
     link.id   = 'ts-font';
@@ -29,7 +27,6 @@
     document.head.appendChild(link);
   }
 
-  // ── STYLES ──
   var css = `
     #ts-fab {
       position: fixed;
@@ -70,7 +67,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 15px; font-weight: 700; color: #fff; white-space: nowrap; letter-spacing: -0.3px;
     }
-    #ts-fab .ts-fab-label span { color: ${GOLD_LIGHT}; }
+    #ts-fab .ts-fab-label .ts-tm { color: ${GOLD_LIGHT}; font-size: 11px; vertical-align: super; }
 
     #ts-overlay {
       position: fixed; inset: 0; z-index: 99999;
@@ -111,7 +108,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 17px; font-weight: 700; color: #fff; line-height: 1.1;
     }
-    .ts-header-title span { color: ${GOLD_LIGHT}; }
+    .ts-header-title .ts-tm { color: ${GOLD_LIGHT}; font-size: 11px; vertical-align: super; }
     .ts-header-firm { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
     .ts-close {
       width: 30px; height: 30px; border-radius: 50%;
@@ -128,7 +125,6 @@
     .ts-body::-webkit-scrollbar-track { background: transparent; }
     .ts-body::-webkit-scrollbar-thumb { background: ${BORDER}; border-radius: 4px; }
 
-    /* SELECTOR SCREEN */
     .ts-selector-intro {
       font-size: 13px; color: ${SLATE}; margin-bottom: 16px; line-height: 1.55;
     }
@@ -156,7 +152,6 @@
     .ts-tool-card-arrow { color: #cbd5e1; font-size: 18px; flex-shrink: 0; transition: color 0.15s; }
     .ts-tool-card:hover .ts-tool-card-arrow { color: ${NAVY}; }
 
-    /* TOOL SCREEN */
     .ts-back {
       display: flex; align-items: center; gap: 6px;
       background: none; border: none; cursor: pointer;
@@ -228,9 +223,11 @@
       padding: 14px; font-size: 13px; line-height: 1.65;
       color: #0f172a; min-height: 80px; font-family: 'DM Sans', sans-serif;
     }
-    .ts-tip { margin-top: 10px; font-size: 11.5px; color: ${SLATE}; line-height: 1.5; }
+    .ts-tip {
+      margin-top: 10px; font-size: 11.5px; color: ${SLATE};
+      line-height: 1.5; font-weight: 700; font-style: italic;
+    }
 
-    /* INTERVIEW BUCKETS */
     .ts-bucket {
       background: #f8fafc; border: 1px solid ${BORDER};
       border-radius: 10px; padding: 13px 15px; margin-bottom: 10px;
@@ -246,7 +243,6 @@
     .ts-bucket ol { margin: 0 0 0 18px; padding: 0; }
     .ts-bucket li { font-size: 13px; line-height: 1.5; margin-bottom: 6px; color: #0f172a; }
 
-    /* COMP RANGES */
     .ts-ranges-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
     .ts-range-card {
       background: #f8fafc; border: 1px solid ${BORDER};
@@ -297,21 +293,16 @@
   style.textContent = css;
   document.head.appendChild(style);
 
-  // ── PENCIL ICON SVG ──
   var PENCIL_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>';
   var BACK_ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>';
 
-  // ── DOM ──
-  // FAB button
   var fab = document.createElement('button');
   fab.id = 'ts-fab';
-  fab.innerHTML = '<div class="ts-fab-icon">' + PENCIL_SVG + '</div><span class="ts-fab-label">The Script<span>™</span></span>';
+  fab.innerHTML = '<div class="ts-fab-icon">' + PENCIL_SVG + '</div><span class="ts-fab-label">The Script<span class="ts-tm">™</span></span>';
 
-  // Overlay
   var overlay = document.createElement('div');
   overlay.id = 'ts-overlay';
 
-  // Panel
   var panel = document.createElement('div');
   panel.id = 'ts-panel';
 
@@ -324,7 +315,7 @@
       <div class="ts-header-left">
         <div class="ts-header-icon">${PENCIL_SVG}</div>
         <div>
-          <div class="ts-header-title">The Script<span>™</span></div>
+          <div class="ts-header-title">The Script<span class="ts-tm">™</span></div>
           <div class="ts-header-firm">${firmDisplay}</div>
         </div>
       </div>
@@ -342,7 +333,6 @@
 
   var body = document.getElementById('ts-body');
 
-  // ── OPEN / CLOSE ──
   function openPanel() {
     overlay.classList.add('ts-open');
     panel.classList.add('ts-open');
@@ -360,7 +350,6 @@
   overlay.addEventListener('click', closePanel);
   document.getElementById('ts-close-btn').addEventListener('click', closePanel);
 
-  // ── SELECTOR SCREEN ──
   var TOOLS = [
     { key: 'cover-letter', icon: '✉️', title: 'Cover Letter Creator',        desc: 'Tailored to the job description & your resume' },
     { key: 'thank-you',    icon: '🤝', title: 'Thank-You Email Writer',       desc: 'Reference a key moment from your interview' },
@@ -380,7 +369,6 @@
     });
   }
 
-  // ── TOOL SCREENS ──
   function showTool(key) {
     body.scrollTop = 0;
     if (key === 'cover-letter') showCoverLetter();
@@ -399,6 +387,10 @@
 
   function escHtml(s) {
     return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+  }
+
+  function renderWithBold(text) {
+    return escHtml(text).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   }
 
   // ── COVER LETTER ──
@@ -420,7 +412,7 @@
       <div id="ts-cl-out-wrap" style="display:none;">
         <div class="ts-output-wrap"><div class="ts-output-label">Your cover letter</div><div class="ts-output-box" id="ts-cl-out"></div></div>
       </div>
-      <div class="ts-tip">Tip: Review and personalize before sending.</div>
+      <div class="ts-tip">💡 Tip: Review and personalize before sending.</div>
     `;
     body.appendChild(wrap);
 
@@ -485,7 +477,7 @@
       <div id="ts-ty-out-wrap" style="display:none;">
         <div class="ts-output-wrap"><div class="ts-output-label">Your thank-you email</div><div class="ts-output-box" id="ts-ty-out"></div></div>
       </div>
-      <div class="ts-tip">Tip: Review and personalize before sending.</div>
+      <div class="ts-tip">💡 Tip: Review and personalize before sending. Replace any <strong>[COMPANY NAME]</strong> placeholder before hitting send.</div>
     `;
     body.appendChild(wrap);
 
@@ -499,13 +491,13 @@
     clearBtn.addEventListener('click', function() {
       ['ts-ty-job','ts-ty-resume','ts-ty-note'].forEach(function(id) { document.getElementById(id).value = ''; });
       document.getElementById('ts-ty-tone').value = 'warm';
-      outEl.textContent = ''; outWrap.style.display = 'none';
+      outEl.innerHTML = ''; outWrap.style.display = 'none';
       statusEl.textContent = ''; statusEl.className = 'ts-status';
       copyBtn.disabled = true; genBtn.disabled = false; genBtn.textContent = 'Generate email';
     });
 
     copyBtn.addEventListener('click', async function() {
-      await navigator.clipboard.writeText(outEl.textContent);
+      await navigator.clipboard.writeText(outEl.innerText);
       statusEl.textContent = 'Copied!'; statusEl.className = 'ts-status ts-ok';
       setTimeout(function() { statusEl.textContent = ''; }, 1500);
     });
@@ -523,7 +515,7 @@
         var resp = await fetch(ENDPOINT + 'thank-you', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ job, resume, interviewNote, tone }) });
         var data = await resp.json();
         if (!resp.ok) throw new Error(data.error || 'Request failed');
-        outEl.textContent = data.thankYouEmail;
+        outEl.innerHTML = renderWithBold(data.thankYouEmail);
         outWrap.style.display = 'block'; copyBtn.disabled = false;
         statusEl.textContent = ''; body.scrollTop = body.scrollHeight;
       } catch(e) { statusEl.textContent = 'Error: ' + e.message; statusEl.className = 'ts-status ts-err'; }
@@ -552,7 +544,7 @@
       </div>
       <div class="ts-status" id="ts-iq-status"></div>
       <div id="ts-iq-out" style="margin-top:16px;"></div>
-      <div class="ts-tip">Edit these questions to match your personal style before the interview.</div>
+      <div class="ts-tip">💡 Tip: Edit these questions to match your personal style before the interview.</div>
     `;
     body.appendChild(wrap);
 
