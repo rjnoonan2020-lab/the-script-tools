@@ -65,9 +65,9 @@
     #ts-fab .ts-fab-icon svg { width: 16px; height: 16px; }
     #ts-fab .ts-fab-label {
       font-family: 'Playfair Display', serif;
-      font-size: 10px; font-weight: 700; color: #fff; white-space: nowrap; letter-spacing: -0.3px;
+      font-size: 15px; font-weight: 700; color: #fff; white-space: nowrap; letter-spacing: -0.3px;
     }
-    #ts-fab .ts-fab-label .ts-tm { color: ${GOLD_LIGHT}; font-size: 8px; vertical-align: super; }
+    #ts-fab .ts-fab-label .ts-tm { color: ${GOLD_LIGHT}; font-size: 11px; vertical-align: super; }
 
     #ts-overlay {
       position: fixed; inset: 0; z-index: 99999;
