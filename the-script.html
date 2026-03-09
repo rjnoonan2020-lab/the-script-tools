@@ -31,7 +31,6 @@
       min-height: 100vh;
     }
 
-    /* ── HEADER ── */
     .header {
       background: var(--navy);
       padding: 0 32px;
@@ -61,8 +60,10 @@
       line-height: 1;
     }
 
-    .logo-mark span {
-      color: var(--gold);
+    .logo-mark .tm {
+      color: var(--gold-light);
+      font-size: 11px;
+      vertical-align: super;
     }
 
     .logo-sub {
@@ -80,7 +81,6 @@
       letter-spacing: 0.2px;
     }
 
-    /* ── HERO ── */
     .hero {
       background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
       padding: 52px 32px 48px;
@@ -130,7 +130,6 @@
       font-weight: 300;
     }
 
-    /* ── TABS ── */
     .tabs-wrap {
       background: var(--navy);
       padding: 0 32px;
@@ -175,11 +174,8 @@
       border-bottom-color: var(--gold);
     }
 
-    .tab-icon {
-      font-size: 15px;
-    }
+    .tab-icon { font-size: 15px; }
 
-    /* ── MAIN ── */
     .main {
       max-width: 940px;
       margin: 0 auto;
@@ -194,7 +190,6 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── TOOL CARD ── */
     .tool-card {
       background: var(--white);
       border: 1px solid var(--border);
@@ -223,11 +218,8 @@
       line-height: 1.55;
     }
 
-    .tool-body {
-      padding: 26px 28px;
-    }
+    .tool-body { padding: 26px 28px; }
 
-    /* ── FORM ELEMENTS ── */
     .field { margin-bottom: 18px; }
 
     .field label {
@@ -272,7 +264,6 @@
       .two-col { grid-template-columns: 1fr; }
     }
 
-    /* ── BUTTONS ── */
     .btn-row {
       display: flex;
       gap: 10px;
@@ -315,7 +306,6 @@
     .btn-secondary:hover { border-color: #94a3b8; background: #f8fafc; }
     .btn-secondary:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    /* ── STATUS ── */
     .status-line {
       font-size: 13px;
       color: var(--slate);
@@ -326,7 +316,6 @@
     .status-line.error { color: #b91c1c; }
     .status-line.success { color: #0b5a1f; }
 
-    /* ── OUTPUT ── */
     .output-wrap { margin-top: 24px; }
 
     .output-label {
@@ -351,16 +340,15 @@
       font-family: 'DM Sans', sans-serif;
     }
 
-    .output-placeholder { color: #94a3b8; font-style: italic; }
-
     .tip {
       margin-top: 10px;
       font-size: 12px;
       color: var(--slate);
       line-height: 1.5;
+      font-weight: 700;
+      font-style: italic;
     }
 
-    /* ── INTERVIEW BUCKETS ── */
     .bucket {
       background: #f8fafc;
       border: 1px solid var(--border);
@@ -389,19 +377,9 @@
       flex-shrink: 0;
     }
 
-    .bucket ol {
-      margin: 0 0 0 20px;
-      padding: 0;
-    }
+    .bucket ol { margin: 0 0 0 20px; padding: 0; }
+    .bucket li { font-size: 14px; line-height: 1.55; margin-bottom: 8px; color: var(--text); }
 
-    .bucket li {
-      font-size: 14px;
-      line-height: 1.55;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-
-    /* ── COMP TOOL RANGES ── */
     .ranges-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -468,22 +446,10 @@
       color: var(--text);
     }
 
-    .narrative-heading {
-      font-weight: 800;
-      color: var(--navy);
-      margin: 16px 0 8px;
-    }
-
+    .narrative-heading { font-weight: 800; color: var(--navy); margin: 16px 0 8px; }
     .narrative-para { margin-bottom: 10px; }
-
-    .narrative-ul {
-      margin: 0 0 10px 20px;
-      padding: 0;
-    }
-
-    .narrative-ul li {
-      margin-bottom: 6px;
-    }
+    .narrative-ul { margin: 0 0 10px 20px; padding: 0; }
+    .narrative-ul li { margin-bottom: 6px; }
 
     .disclaimer {
       margin-top: 12px;
@@ -496,7 +462,6 @@
       border: 1px solid var(--border);
     }
 
-    /* ── FOOTER ── */
     .footer {
       background: var(--navy);
       color: rgba(255,255,255,0.4);
@@ -512,44 +477,32 @@
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="logo">
-    <div class="logo-mark">The Script<span>™</span></div>
+    <div class="logo-mark">The Script<span class="tm">™</span></div>
     <div class="logo-sub">Job Search Tools</div>
   </div>
   <div class="header-tagline">Powered by Third Act Advisors, LLC</div>
 </header>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-eyebrow">Four tools. One place.</div>
   <h1 class="hero-title">Write smarter.<br><em>Land the role.</em></h1>
   <p class="hero-desc">AI-assisted tools that reduce writing time and sharpen how you present yourself — from application to offer.</p>
 </div>
 
-<!-- TABS -->
 <div class="tabs-wrap">
   <div class="tabs">
-    <button class="tab active" data-tab="cover-letter">
-      <span class="tab-icon">✉️</span> Cover Letter
-    </button>
-    <button class="tab" data-tab="thank-you">
-      <span class="tab-icon">🤝</span> Thank-You Email
-    </button>
-    <button class="tab" data-tab="interview">
-      <span class="tab-icon">💬</span> Interview Questions
-    </button>
-    <button class="tab" data-tab="compensation">
-      <span class="tab-icon">💰</span> Compensation
-    </button>
+    <button class="tab active" data-tab="cover-letter"><span class="tab-icon">✉️</span> Cover Letter</button>
+    <button class="tab" data-tab="thank-you"><span class="tab-icon">🤝</span> Thank-You Email</button>
+    <button class="tab" data-tab="interview"><span class="tab-icon">💬</span> Interview Questions</button>
+    <button class="tab" data-tab="compensation"><span class="tab-icon">💰</span> Compensation</button>
   </div>
 </div>
 
-<!-- MAIN -->
 <main class="main">
 
-  <!-- ── COVER LETTER ── -->
+  <!-- COVER LETTER -->
   <div class="panel active" id="panel-cover-letter">
     <div class="tool-card">
       <div class="tool-card-header">
@@ -557,14 +510,8 @@
         <div class="tool-desc">Paste the job description and your resume. Click Generate. A tailored cover letter will appear below — review and personalize before sending.</div>
       </div>
       <div class="tool-body">
-        <div class="field">
-          <label>Job description <span class="req">*</span></label>
-          <textarea id="cl_job" placeholder="Paste the job description here…"></textarea>
-        </div>
-        <div class="field">
-          <label>Your resume <span class="req">*</span></label>
-          <textarea id="cl_resume" placeholder="Paste your resume here…"></textarea>
-        </div>
+        <div class="field"><label>Job description <span class="req">*</span></label><textarea id="cl_job" placeholder="Paste the job description here…"></textarea></div>
+        <div class="field"><label>Your resume <span class="req">*</span></label><textarea id="cl_resume" placeholder="Paste your resume here…"></textarea></div>
         <div class="btn-row">
           <button class="btn-primary" id="cl_generate">Generate cover letter</button>
           <button class="btn-secondary" id="cl_copy" disabled>Copy to clipboard</button>
@@ -575,12 +522,12 @@
           <div class="output-label">Your cover letter</div>
           <div class="output-box" id="cl_output"></div>
         </div>
-        <div class="tip">Tip: Review and personalize this draft before sending. This tool is designed to reduce writing time and support your thinking, not to replace your personal voice or judgment.</div>
+        <div class="tip">💡 Tip: Review and personalize this draft before sending. This tool is designed to reduce writing time and support your thinking, not to replace your personal voice or judgment.</div>
       </div>
     </div>
   </div>
 
-  <!-- ── THANK-YOU EMAIL ── -->
+  <!-- THANK-YOU EMAIL -->
   <div class="panel" id="panel-thank-you">
     <div class="tool-card">
       <div class="tool-card-header">
@@ -588,18 +535,9 @@
         <div class="tool-desc">Paste the job description and your resume, then add one memorable interview detail. Choose a tone and click Generate.</div>
       </div>
       <div class="tool-body">
-        <div class="field">
-          <label>Job description <span class="req">*</span></label>
-          <textarea id="ty_job" placeholder="Paste the job description here…"></textarea>
-        </div>
-        <div class="field">
-          <label>Your resume <span class="req">*</span></label>
-          <textarea id="ty_resume" placeholder="Paste your resume here…"></textarea>
-        </div>
-        <div class="field">
-          <label>Memorable interview detail to reference <span class="req">*</span></label>
-          <textarea id="ty_note" style="min-height:100px;" placeholder="Example: They emphasized the need for someone to improve cross-team reporting; I shared how I built a dashboard that reduced weekly prep time by 30%."></textarea>
-        </div>
+        <div class="field"><label>Job description <span class="req">*</span></label><textarea id="ty_job" placeholder="Paste the job description here…"></textarea></div>
+        <div class="field"><label>Your resume <span class="req">*</span></label><textarea id="ty_resume" placeholder="Paste your resume here…"></textarea></div>
+        <div class="field"><label>Memorable interview detail to reference <span class="req">*</span></label><textarea id="ty_note" style="min-height:100px;" placeholder="Example: They emphasized the need for someone to improve cross-team reporting; I shared how I built a dashboard that reduced weekly prep time by 30%."></textarea></div>
         <div class="field" style="max-width:220px;">
           <label>Tone</label>
           <select id="ty_tone">
@@ -618,12 +556,12 @@
           <div class="output-label">Your thank-you email</div>
           <div class="output-box" id="ty_output"></div>
         </div>
-        <div class="tip">Tip: Review and personalize this draft before sending. This tool is designed to reduce writing time and support your thinking, not to replace your personal voice or judgment.</div>
+        <div class="tip">💡 Tip: Review and personalize before sending. Replace any <strong>[COMPANY NAME]</strong> placeholder before hitting send.</div>
       </div>
     </div>
   </div>
 
-  <!-- ── INTERVIEW QUESTIONS ── -->
+  <!-- INTERVIEW QUESTIONS -->
   <div class="panel" id="panel-interview">
     <div class="tool-card">
       <div class="tool-card-header">
@@ -631,49 +569,25 @@
         <div class="tool-desc">Paste a job description (required) and a resume (optional). You'll receive 12 likely interview questions, grouped into three buckets.</div>
       </div>
       <div class="tool-body">
-        <div class="field">
-          <label>Role title <span style="font-weight:400;color:var(--slate)">(optional)</span></label>
-          <input type="text" id="iq_roleTitle" placeholder="e.g., Product Manager, Sales Director" />
-        </div>
+        <div class="field"><label>Role title <span style="font-weight:400;color:var(--slate)">(optional)</span></label><input type="text" id="iq_roleTitle" placeholder="e.g., Product Manager, Sales Director" /></div>
         <div class="two-col">
-          <div class="field">
-            <label>Role stage</label>
-            <select id="iq_roleStage">
-              <option value="ic">Individual Contributor</option>
-              <option value="manager">Manager</option>
-              <option value="director" selected>Director</option>
-              <option value="vp">VP</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Seniority lens</label>
-            <select id="iq_seniority">
-              <option value="junior">Junior</option>
-              <option value="mid" selected>Mid</option>
-              <option value="exec">Exec</option>
-            </select>
-          </div>
+          <div class="field"><label>Role stage</label><select id="iq_roleStage"><option value="ic">Individual Contributor</option><option value="manager">Manager</option><option value="director" selected>Director</option><option value="vp">VP</option></select></div>
+          <div class="field"><label>Seniority lens</label><select id="iq_seniority"><option value="junior">Junior</option><option value="mid" selected>Mid</option><option value="exec">Exec</option></select></div>
         </div>
-        <div class="field">
-          <label>Job description <span class="req">*</span></label>
-          <textarea id="iq_jobDescription" placeholder="Paste the job description here…"></textarea>
-        </div>
-        <div class="field">
-          <label>Resume <span style="font-weight:400;color:var(--slate)">(optional)</span></label>
-          <textarea id="iq_resume" placeholder="Paste the resume here (optional)…"></textarea>
-        </div>
+        <div class="field"><label>Job description <span class="req">*</span></label><textarea id="iq_jobDescription" placeholder="Paste the job description here…"></textarea></div>
+        <div class="field"><label>Resume <span style="font-weight:400;color:var(--slate)">(optional)</span></label><textarea id="iq_resume" placeholder="Paste the resume here (optional)…"></textarea></div>
         <div class="btn-row">
           <button class="btn-primary" id="iq_generate">Generate questions</button>
           <button class="btn-secondary" id="iq_clear">Clear</button>
         </div>
         <div class="status-line" id="iq_status"></div>
         <div id="iq_output" style="margin-top:20px;"></div>
-        <div class="tip">It is recommended that you further edit these questions to your personal style and voice. This tool reduces prep time and should not be used without review.</div>
+        <div class="tip">💡 Tip: Edit these questions to match your personal style and voice before the interview.</div>
       </div>
     </div>
   </div>
 
-  <!-- ── COMPENSATION ── -->
+  <!-- COMPENSATION -->
   <div class="panel" id="panel-compensation">
     <div class="tool-card">
       <div class="tool-card-header">
@@ -682,82 +596,15 @@
       </div>
       <div class="tool-body">
         <div class="two-col">
-          <div class="field">
-            <label>Function <span class="req">*</span></label>
-            <select id="cp_function" required>
-              <option value="" disabled selected>Select</option>
-              <option>Sales</option><option>Marketing</option><option>Operations</option>
-              <option>Finance</option><option>HR / People</option><option>Customer Success</option>
-              <option>Product</option><option>IT / Engineering</option><option>Other</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Level <span class="req">*</span></label>
-            <select id="cp_level" required>
-              <option value="" disabled selected>Select</option>
-              <option value="IC">Individual Contributor</option>
-              <option value="Manager">Manager</option>
-              <option value="Director">Director</option>
-              <option value="VP">VP</option>
-              <option value="C-Suite">C-Suite</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Years of experience <span class="req">*</span></label>
-            <select id="cp_experience" required>
-              <option value="" disabled selected>Select</option>
-              <option value="0–2 (Entry level / Recent grad)">0–2 (Entry level / Recent grad)</option>
-              <option value="3–7">3–7</option>
-              <option value="8–15">8–15</option>
-              <option value="16–25">16–25</option>
-              <option value="25+">25+</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Geography <span class="req">*</span></label>
-            <select id="cp_geography" required>
-              <option value="" disabled selected>Select</option>
-              <option value="High Cost Metro">High Cost Metro (NYC, SF, Boston, Seattle, LA, Chicago)</option>
-              <option value="Major Metro">Major Metro (Austin, Denver, Atlanta, Miami, Dallas, Houston)</option>
-              <option value="Mid Market">Mid Market</option>
-              <option value="Remote National">Remote National</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Industry <span class="req">*</span></label>
-            <select id="cp_industry" required>
-              <option value="" disabled selected>Select</option>
-              <option>SaaS / Cloud</option><option>Enterprise Software</option>
-              <option>Finance / FinTech</option><option>Healthcare / MedTech</option>
-              <option>Cybersecurity</option><option>Manufacturing</option>
-              <option>Consulting / Professional Services</option><option>Retail / Consumer</option>
-              <option>Education / EdTech</option><option>Media</option>
-              <option>Nonprofit</option><option>Other</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Company size <span class="req">*</span></label>
-            <select id="cp_companySize" required>
-              <option value="" disabled selected>Select</option>
-              <option>Startup</option><option>Growth Stage</option><option>Enterprise</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Current base salary <span style="font-weight:400;color:var(--slate)">(optional)</span></label>
-            <input type="text" id="cp_currentBase" inputmode="numeric" placeholder="e.g. 120000" />
-          </div>
-          <div class="field">
-            <label>Current total compensation <span style="font-weight:400;color:var(--slate)">(optional)</span></label>
-            <input type="text" id="cp_currentTotal" inputmode="numeric" placeholder="e.g. 155000" />
-          </div>
-          <div class="field">
-            <label>Equity in current package <span style="font-weight:400;color:var(--slate)">(optional)</span></label>
-            <select id="cp_equity">
-              <option value="" disabled selected>Select (optional)</option>
-              <option value="No">No</option>
-              <option value="Yes">Yes</option>
-            </select>
-          </div>
+          <div class="field"><label>Function <span class="req">*</span></label><select id="cp_function" required><option value="" disabled selected>Select</option><option>Sales</option><option>Marketing</option><option>Operations</option><option>Finance</option><option>HR / People</option><option>Customer Success</option><option>Product</option><option>IT / Engineering</option><option>Other</option></select></div>
+          <div class="field"><label>Level <span class="req">*</span></label><select id="cp_level" required><option value="" disabled selected>Select</option><option value="IC">Individual Contributor</option><option value="Manager">Manager</option><option value="Director">Director</option><option value="VP">VP</option><option value="C-Suite">C-Suite</option></select></div>
+          <div class="field"><label>Years of experience <span class="req">*</span></label><select id="cp_experience" required><option value="" disabled selected>Select</option><option value="0–2 (Entry level / Recent grad)">0–2 (Entry level / Recent grad)</option><option value="3–7">3–7</option><option value="8–15">8–15</option><option value="16–25">16–25</option><option value="25+">25+</option></select></div>
+          <div class="field"><label>Geography <span class="req">*</span></label><select id="cp_geography" required><option value="" disabled selected>Select</option><option value="High Cost Metro">High Cost Metro (NYC, SF, Boston, Seattle, LA, Chicago)</option><option value="Major Metro">Major Metro (Austin, Denver, Atlanta, Miami, Dallas, Houston)</option><option value="Mid Market">Mid Market</option><option value="Remote National">Remote National</option></select></div>
+          <div class="field"><label>Industry <span class="req">*</span></label><select id="cp_industry" required><option value="" disabled selected>Select</option><option>SaaS / Cloud</option><option>Enterprise Software</option><option>Finance / FinTech</option><option>Healthcare / MedTech</option><option>Cybersecurity</option><option>Manufacturing</option><option>Consulting / Professional Services</option><option>Retail / Consumer</option><option>Education / EdTech</option><option>Media</option><option>Nonprofit</option><option>Other</option></select></div>
+          <div class="field"><label>Company size <span class="req">*</span></label><select id="cp_companySize" required><option value="" disabled selected>Select</option><option>Startup</option><option>Growth Stage</option><option>Enterprise</option></select></div>
+          <div class="field"><label>Current base salary <span style="font-weight:400;color:var(--slate)">(optional)</span></label><input type="text" id="cp_currentBase" inputmode="numeric" placeholder="e.g. 120000" /></div>
+          <div class="field"><label>Current total compensation <span style="font-weight:400;color:var(--slate)">(optional)</span></label><input type="text" id="cp_currentTotal" inputmode="numeric" placeholder="e.g. 155000" /></div>
+          <div class="field"><label>Equity in current package <span style="font-weight:400;color:var(--slate)">(optional)</span></label><select id="cp_equity"><option value="" disabled selected>Select (optional)</option><option value="No">No</option><option value="Yes">Yes</option></select></div>
         </div>
         <div class="btn-row">
           <button class="btn-primary" id="cp_generate">Generate compensation report</button>
@@ -767,14 +614,8 @@
         <div id="cp_output_wrap" style="display:none; margin-top:24px;">
           <div class="confidence-note" id="cp_confidence"></div>
           <div class="ranges-grid">
-            <div class="range-card">
-              <div class="range-card-label">Base Salary</div>
-              <div class="range-card-value" id="cp_baseLine">—</div>
-            </div>
-            <div class="range-card">
-              <div class="range-card-label">Total Compensation Estimate</div>
-              <div class="range-card-value" id="cp_totalLine">—</div>
-            </div>
+            <div class="range-card"><div class="range-card-label">Base Salary</div><div class="range-card-value" id="cp_baseLine">—</div></div>
+            <div class="range-card"><div class="range-card-label">Total Compensation Estimate</div><div class="range-card-value" id="cp_totalLine">—</div></div>
           </div>
           <div class="position-card" id="cp_positionWrap" style="display:none;">
             <div class="position-card-label">Your Market Position Snapshot</div>
@@ -783,21 +624,19 @@
           </div>
           <div class="narrative-wrap" id="cp_report"></div>
         </div>
-        <div class="disclaimer">Disclaimer: This tool provides generalized market estimates based on aggregated patterns and does not account for every factor that affects compensation. Results are informational only and are not a guarantee of compensation.</div>
+        <div class="disclaimer">💡 Tip: This tool provides generalized market estimates based on aggregated patterns and does not account for every factor that affects compensation. Results are informational only and are not a guarantee of compensation.</div>
       </div>
     </div>
   </div>
 
 </main>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div>© 2026 Third Act Advisors, LLC &nbsp;·&nbsp; <a href="/privacy-policy">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms-and-conditions">Terms</a></div>
   <div style="margin-top:6px;">The Script™ is informational only and does not constitute career, legal, or compensation advice.</div>
 </footer>
 
 <script>
-// ── TAB SWITCHING ──
 document.querySelectorAll('.tab').forEach(function(tab) {
   tab.addEventListener('click', function() {
     document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
@@ -806,6 +645,10 @@ document.querySelectorAll('.tab').forEach(function(tab) {
     document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
   });
 });
+
+function renderWithBold(text) {
+  return String(text || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
 
 // ── COVER LETTER ──
 (function() {
@@ -901,7 +744,7 @@ document.querySelectorAll('.tab').forEach(function(tab) {
   function enableCopy(on) { btnCopy.disabled = !on; }
 
   btnCopy.addEventListener('click', async function() {
-    await navigator.clipboard.writeText(outputEl.textContent);
+    await navigator.clipboard.writeText(outputEl.innerText);
     statusEl.textContent = 'Copied to clipboard.';
     statusEl.className = 'status-line success';
     setTimeout(function() { statusEl.textContent = ''; }, 1500);
@@ -910,7 +753,7 @@ document.querySelectorAll('.tab').forEach(function(tab) {
   btnClear.addEventListener('click', function() {
     jobEl.value = ''; resumeEl.value = ''; noteEl.value = '';
     toneEl.value = 'warm';
-    outputEl.textContent = '';
+    outputEl.innerHTML = '';
     outputWrap.style.display = 'none';
     statusEl.textContent = ''; statusEl.className = 'status-line';
     enableCopy(false);
@@ -939,7 +782,7 @@ document.querySelectorAll('.tab').forEach(function(tab) {
       });
       var data = await resp.json();
       if (!resp.ok) throw new Error(data.error || 'Request failed');
-      outputEl.textContent = data.thankYouEmail;
+      outputEl.innerHTML = renderWithBold(data.thankYouEmail);
       outputWrap.style.display = 'block';
       enableCopy(true);
       statusEl.textContent = '';
