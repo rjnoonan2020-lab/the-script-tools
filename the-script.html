@@ -682,7 +682,7 @@ function renderWithBold(text) {
 
   btnClear.addEventListener('click', function() {
     jobEl.value = ''; resumeEl.value = '';
-    outputEl.textContent = '';
+    outputEl.innerHTML = '';
     outputWrap.style.display = 'none';
     statusEl.textContent = ''; statusEl.className = 'status-line';
     enableCopy(false);
@@ -749,7 +749,11 @@ function renderWithBold(text) {
     statusEl.className = 'status-line';
   }
 
-  function enableCopy(on) { btnCopy.disabled = !on; }
+  function enableCopy(on) { 
+    btnCopy.disabled = !on; 
+    btnCopy.style.opacity = on ? '1' : '0.5';
+    btnCopy.style.display = 'inline-flex';
+  }
 
   btnCopy.addEventListener('click', async function() {
     await navigator.clipboard.writeText(outputEl.innerText);
