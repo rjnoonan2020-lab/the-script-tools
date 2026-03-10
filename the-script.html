@@ -510,8 +510,14 @@
         <div class="tool-desc">Paste the job description and your resume. Click Generate. A tailored cover letter will appear below — review and personalize before sending.</div>
       </div>
       <div class="tool-body">
-        <div class="field"><label>Job description <span class="req">*</span></label><textarea id="cl_job" placeholder="Paste the full job description here — including any text hidden behind a 'see more' button…"></textarea></div>
-        <div class="field"><label>Your resume <span class="req">*</span></label><textarea id="cl_resume" placeholder="Paste your resume here…"></textarea></div>
+        <div class="field">
+          <label>Job description <span class="req">*</span></label>
+          <textarea id="cl_job" placeholder="Paste the full job description here — including any text hidden behind a 'See more' button…"></textarea>
+        </div>
+        <div class="field">
+          <label>Your resume <span class="req">*</span></label>
+          <textarea id="cl_resume" placeholder="Paste your resume here…"></textarea>
+        </div>
         <div class="btn-row">
           <button class="btn-primary" id="cl_generate">Generate cover letter</button>
           <button class="btn-secondary" id="cl_clear">Clear</button>
@@ -537,9 +543,18 @@
         <div class="tool-desc">Paste the job description and your resume, then add one memorable interview detail. Choose a tone and click Generate.</div>
       </div>
       <div class="tool-body">
-        <div class="field"><label>Job description <span class="req">*</span></label><textarea id="ty_job" placeholder="Paste the full job description here…"></textarea></div>
-        <div class="field"><label>Your resume <span class="req">*</span></label><textarea id="ty_resume" placeholder="Paste your resume here…"></textarea></div>
-        <div class="field"><label>Memorable interview detail to reference <span class="req">*</span></label><textarea id="ty_note" style="min-height:100px;" placeholder="Example: They emphasized the need for someone to improve cross-team reporting; I shared how I built a dashboard that reduced weekly prep time by 30%."></textarea></div>
+        <div class="field">
+          <label>Job description <span class="req">*</span></label>
+          <textarea id="ty_job" placeholder="Paste the full job description here — including any text hidden behind a 'See more' button…"></textarea>
+        </div>
+        <div class="field">
+          <label>Your resume <span class="req">*</span></label>
+          <textarea id="ty_resume" placeholder="Paste your resume here…"></textarea>
+        </div>
+        <div class="field">
+          <label>Memorable interview detail to reference <span class="req">*</span></label>
+          <textarea id="ty_note" style="min-height:100px;" placeholder="Example: They emphasized the need for someone to improve cross-team reporting; I shared how I built a dashboard that reduced weekly prep time by 30%."></textarea>
+        </div>
         <div class="field" style="max-width:220px;">
           <label>Tone</label>
           <select id="ty_tone">
@@ -550,13 +565,15 @@
         </div>
         <div class="btn-row">
           <button class="btn-primary" id="ty_generate">Generate thank-you email</button>
-          <button class="btn-secondary" id="ty_copy" disabled>Copy to clipboard</button>
           <button class="btn-secondary" id="ty_clear">Clear</button>
         </div>
         <div class="status-line" id="ty_status"></div>
         <div class="output-wrap" id="ty_output_wrap" style="display:none;">
           <div class="output-label">Your thank-you email</div>
           <div class="output-box" id="ty_output"></div>
+          <div class="btn-row" style="margin-top:12px;">
+            <button class="btn-secondary" id="ty_copy" disabled>Copy to clipboard</button>
+          </div>
         </div>
         <div class="tip">💡 Tip: Review and personalize before sending. Replace any <strong>[COMPANY NAME]</strong> placeholder before hitting send.</div>
       </div>
@@ -571,13 +588,37 @@
         <div class="tool-desc">Paste a job description (required) and a resume (optional). You'll receive 12 likely interview questions, grouped into three buckets.</div>
       </div>
       <div class="tool-body">
-        <div class="field"><label>Role title <span style="font-weight:400;color:var(--slate)">(optional)</span></label><input type="text" id="iq_roleTitle" placeholder="e.g., Product Manager, Sales Director" /></div>
-        <div class="two-col">
-          <div class="field"><label>Role stage</label><select id="iq_roleStage"><option value="ic">Individual Contributor</option><option value="manager">Manager</option><option value="director" selected>Director</option><option value="vp">VP</option></select></div>
-          <div class="field"><label>Seniority lens</label><select id="iq_seniority"><option value="junior">Junior</option><option value="mid" selected>Mid</option><option value="exec">Exec</option></select></div>
+        <div class="field">
+          <label>Role title <span style="font-weight:400;color:var(--slate)">(optional)</span></label>
+          <input type="text" id="iq_roleTitle" placeholder="e.g., Product Manager, Sales Director" />
         </div>
-        <div class="field"><label>Job description <span class="req">*</span></label><textarea id="iq_jobDescription" placeholder="Paste the full job description here…"></textarea></div>
-        <div class="field"><label>Resume <span style="font-weight:400;color:var(--slate)">(optional)</span></label><textarea id="iq_resume" placeholder="Paste the resume here (optional)…"></textarea></div>
+        <div class="two-col">
+          <div class="field">
+            <label>Role stage</label>
+            <select id="iq_roleStage">
+              <option value="ic">Individual Contributor</option>
+              <option value="manager">Manager</option>
+              <option value="director" selected>Director</option>
+              <option value="vp">VP</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Seniority lens</label>
+            <select id="iq_seniority">
+              <option value="junior">Junior</option>
+              <option value="mid" selected>Mid</option>
+              <option value="exec">Exec</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Job description <span class="req">*</span></label>
+          <textarea id="iq_jobDescription" placeholder="Paste the full job description here — including any text hidden behind a 'See more' button…"></textarea>
+        </div>
+        <div class="field">
+          <label>Resume <span style="font-weight:400;color:var(--slate)">(optional)</span></label>
+          <textarea id="iq_resume" placeholder="Paste your resume here (optional)…"></textarea>
+        </div>
         <div class="btn-row">
           <button class="btn-primary" id="iq_generate">Generate questions</button>
           <button class="btn-secondary" id="iq_clear">Clear</button>
@@ -654,15 +695,15 @@ function renderWithBold(text) {
 
 // ── COVER LETTER ──
 (function() {
-  var jobEl = document.getElementById('cl_job');
-  var resumeEl = document.getElementById('cl_resume');
-  var btn = document.getElementById('cl_generate');
-  var btnCopy = document.getElementById('cl_copy');
-  var btnClear = document.getElementById('cl_clear');
-  var statusEl = document.getElementById('cl_status');
-  var outputEl = document.getElementById('cl_output');
+  var jobEl      = document.getElementById('cl_job');
+  var resumeEl   = document.getElementById('cl_resume');
+  var btn        = document.getElementById('cl_generate');
+  var btnCopy    = document.getElementById('cl_copy');
+  var btnClear   = document.getElementById('cl_clear');
+  var statusEl   = document.getElementById('cl_status');
+  var outputEl   = document.getElementById('cl_output');
   var outputWrap = document.getElementById('cl_output_wrap');
-  var ENDPOINT = 'https://effulgent-marshmallow-334527.netlify.app/.netlify/functions/cover-letter';
+  var ENDPOINT   = 'https://effulgent-marshmallow-334527.netlify.app/.netlify/functions/cover-letter';
 
   function setLoading(on) {
     btn.disabled = on;
@@ -671,19 +712,28 @@ function renderWithBold(text) {
     statusEl.className = 'status-line';
   }
 
-  function enableCopy(on) { btnCopy.disabled = !on; }
+  function enableCopy(on) {
+    btnCopy.disabled = !on;
+    btnCopy.style.opacity = on ? '1' : '0.5';
+  }
 
   btnCopy.addEventListener('click', async function() {
-    await navigator.clipboard.writeText(outputEl.textContent);
-    statusEl.textContent = 'Copied to clipboard.';
-    statusEl.className = 'status-line success';
-    setTimeout(function() { statusEl.textContent = ''; }, 1500);
+    try {
+      await navigator.clipboard.writeText(outputEl.innerText);
+      statusEl.textContent = 'Copied to clipboard.';
+      statusEl.className = 'status-line success';
+      setTimeout(function() { statusEl.textContent = ''; }, 1500);
+    } catch(e) {
+      statusEl.textContent = 'Could not copy — please select and copy manually.';
+      statusEl.className = 'status-line error';
+    }
   });
 
   btnClear.addEventListener('click', function() {
     jobEl.value = ''; resumeEl.value = '';
     outputEl.innerHTML = '';
     outputWrap.style.display = 'none';
+    document.getElementById('cl_tip').style.display = 'none';
     statusEl.textContent = ''; statusEl.className = 'status-line';
     enableCopy(false);
     btn.disabled = false;
@@ -691,7 +741,7 @@ function renderWithBold(text) {
   });
 
   btn.addEventListener('click', async function() {
-    var job = jobEl.value.trim();
+    var job    = jobEl.value.trim();
     var resume = resumeEl.value.trim();
     enableCopy(false);
     if (!job || !resume) {
@@ -730,17 +780,17 @@ function renderWithBold(text) {
 
 // ── THANK-YOU EMAIL ──
 (function() {
-  var jobEl = document.getElementById('ty_job');
-  var resumeEl = document.getElementById('ty_resume');
-  var noteEl = document.getElementById('ty_note');
-  var toneEl = document.getElementById('ty_tone');
-  var btn = document.getElementById('ty_generate');
-  var btnCopy = document.getElementById('ty_copy');
-  var btnClear = document.getElementById('ty_clear');
-  var statusEl = document.getElementById('ty_status');
-  var outputEl = document.getElementById('ty_output');
+  var jobEl      = document.getElementById('ty_job');
+  var resumeEl   = document.getElementById('ty_resume');
+  var noteEl     = document.getElementById('ty_note');
+  var toneEl     = document.getElementById('ty_tone');
+  var btn        = document.getElementById('ty_generate');
+  var btnCopy    = document.getElementById('ty_copy');
+  var btnClear   = document.getElementById('ty_clear');
+  var statusEl   = document.getElementById('ty_status');
+  var outputEl   = document.getElementById('ty_output');
   var outputWrap = document.getElementById('ty_output_wrap');
-  var ENDPOINT = 'https://effulgent-marshmallow-334527.netlify.app/.netlify/functions/thank-you';
+  var ENDPOINT   = 'https://effulgent-marshmallow-334527.netlify.app/.netlify/functions/thank-you';
 
   function setLoading(on) {
     btn.disabled = on;
@@ -749,17 +799,21 @@ function renderWithBold(text) {
     statusEl.className = 'status-line';
   }
 
-  function enableCopy(on) { 
-    btnCopy.disabled = !on; 
+  function enableCopy(on) {
+    btnCopy.disabled = !on;
     btnCopy.style.opacity = on ? '1' : '0.5';
-    btnCopy.style.display = 'inline-flex';
   }
 
   btnCopy.addEventListener('click', async function() {
-    await navigator.clipboard.writeText(outputEl.innerText);
-    statusEl.textContent = 'Copied to clipboard.';
-    statusEl.className = 'status-line success';
-    setTimeout(function() { statusEl.textContent = ''; }, 1500);
+    try {
+      await navigator.clipboard.writeText(outputEl.innerText);
+      statusEl.textContent = 'Copied to clipboard.';
+      statusEl.className = 'status-line success';
+      setTimeout(function() { statusEl.textContent = ''; }, 1500);
+    } catch(e) {
+      statusEl.textContent = 'Could not copy — please select and copy manually.';
+      statusEl.className = 'status-line error';
+    }
   });
 
   btnClear.addEventListener('click', function() {
@@ -774,10 +828,10 @@ function renderWithBold(text) {
   });
 
   btn.addEventListener('click', async function() {
-    var job = jobEl.value.trim();
-    var resume = resumeEl.value.trim();
+    var job           = jobEl.value.trim();
+    var resume        = resumeEl.value.trim();
     var interviewNote = noteEl.value.trim();
-    var tone = toneEl.value;
+    var tone          = toneEl.value;
     enableCopy(false);
     if (!job || !resume || !interviewNote) {
       statusEl.textContent = 'Please complete all fields above.';
@@ -809,7 +863,7 @@ function renderWithBold(text) {
 
 // ── INTERVIEW QUESTIONS ──
 (function() {
-  var btn = document.getElementById('iq_generate');
+  var btn      = document.getElementById('iq_generate');
   var btnClear = document.getElementById('iq_clear');
   var statusEl = document.getElementById('iq_status');
   var outputEl = document.getElementById('iq_output');
@@ -854,17 +908,17 @@ function renderWithBold(text) {
     try {
       var payload = {
         jobDescription: jobDescription,
-        resume: document.getElementById('iq_resume').value.trim(),
+        resume:    document.getElementById('iq_resume').value.trim(),
         roleTitle: document.getElementById('iq_roleTitle').value.trim(),
         roleStage: document.getElementById('iq_roleStage').value,
         seniority: document.getElementById('iq_seniority').value
       };
-      var res = await fetch(ENDPOINT, {
+      var res  = await fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      var raw = await res.text();
+      var raw  = await res.text();
       var data = {};
       try { data = JSON.parse(raw); } catch(e) { data = { error: raw }; }
       if (!res.ok) throw new Error(data.error || 'Request failed (' + res.status + ')');
@@ -881,18 +935,18 @@ function renderWithBold(text) {
 
 // ── COMPENSATION ──
 (function() {
-  var ENDPOINT = 'https://effulgent-marshmallow-334527.netlify.app/.netlify/functions/generate-comp-positioning';
-  var statusEl = document.getElementById('cp_status');
-  var outputWrap = document.getElementById('cp_output_wrap');
-  var reportEl = document.getElementById('cp_report');
-  var baseLineEl = document.getElementById('cp_baseLine');
-  var totalLineEl = document.getElementById('cp_totalLine');
-  var confidenceEl = document.getElementById('cp_confidence');
-  var positionWrap = document.getElementById('cp_positionWrap');
+  var ENDPOINT          = 'https://effulgent-marshmallow-334527.netlify.app/.netlify/functions/generate-comp-positioning';
+  var statusEl          = document.getElementById('cp_status');
+  var outputWrap        = document.getElementById('cp_output_wrap');
+  var reportEl          = document.getElementById('cp_report');
+  var baseLineEl        = document.getElementById('cp_baseLine');
+  var totalLineEl       = document.getElementById('cp_totalLine');
+  var confidenceEl      = document.getElementById('cp_confidence');
+  var positionWrap      = document.getElementById('cp_positionWrap');
   var positionSummaryEl = document.getElementById('cp_positionSummary');
-  var positionNoteEl = document.getElementById('cp_positionNote');
-  var btn = document.getElementById('cp_generate');
-  var el = function(id) { return document.getElementById(id); };
+  var positionNoteEl    = document.getElementById('cp_positionNote');
+  var btn               = document.getElementById('cp_generate');
+  var el                = function(id) { return document.getElementById(id); };
 
   var sanitizeMoney = function(v) {
     if (!v) return '';
@@ -995,21 +1049,21 @@ function renderWithBold(text) {
     positionSummaryEl.innerHTML = '';
     positionNoteEl.textContent = '';
     var cb = payload.currentBase, ct = payload.currentTotal, eq = payload.equity;
-    var baseRange = data && data.ranges && data.ranges.base;
+    var baseRange  = data && data.ranges && data.ranges.base;
     var totalRange = data && data.ranges && data.ranges.total;
-    var hasBase = isFinite(cb) && cb > 0;
+    var hasBase  = isFinite(cb) && cb > 0;
     var hasTotal = isFinite(ct) && ct > 0;
     if (!hasBase && !hasTotal) return;
     var lines = [];
     if (hasBase && baseRange && isFinite(baseRange.mid)) {
-      var pct = pctVsMid(cb, baseRange.mid);
+      var pct     = pctVsMid(cb, baseRange.mid);
       var bandPos = positionInBand(cb, baseRange.low, baseRange.high);
       lines.push('<div style="margin:0 0 6px 0;"><strong>Current base vs market midpoint:</strong> ' + formatPct(pct) + ' (' + describeBand(bandPos) + ', ' + approxPercentileText(bandPos) + ')</div>');
     } else if (hasBase) {
       lines.push('<div style="margin:0 0 6px 0;"><strong>Current base:</strong> ' + formatUSD(cb) + ' (comparison not available)</div>');
     }
     if (hasTotal && totalRange && isFinite(totalRange.mid)) {
-      var pct2 = pctVsMid(ct, totalRange.mid);
+      var pct2     = pctVsMid(ct, totalRange.mid);
       var bandPos2 = positionInBand(ct, totalRange.low, totalRange.high);
       lines.push('<div style="margin:0 0 6px 0;"><strong>Current total vs market midpoint:</strong> ' + formatPct(pct2) + ' (' + describeBand(bandPos2) + ', ' + approxPercentileText(bandPos2) + ')</div>');
     } else if (hasTotal) {
@@ -1038,14 +1092,14 @@ function renderWithBold(text) {
 
     var payload = {
       functionGroup: el('cp_function').value,
-      level: el('cp_level').value,
-      experience: el('cp_experience').value,
-      geography: el('cp_geography').value,
-      industry: el('cp_industry').value,
-      companySize: el('cp_companySize').value,
-      currentBase: sanitizeMoney(el('cp_currentBase').value) || '',
-      currentTotal: sanitizeMoney(el('cp_currentTotal').value) || '',
-      equity: el('cp_equity').value || ''
+      level:         el('cp_level').value,
+      experience:    el('cp_experience').value,
+      geography:     el('cp_geography').value,
+      industry:      el('cp_industry').value,
+      companySize:   el('cp_companySize').value,
+      currentBase:   sanitizeMoney(el('cp_currentBase').value) || '',
+      currentTotal:  sanitizeMoney(el('cp_currentTotal').value) || '',
+      equity:        el('cp_equity').value || ''
     };
 
     try {
@@ -1058,12 +1112,12 @@ function renderWithBold(text) {
         signal: controller.signal
       });
       clearTimeout(timeout);
-      var raw = await res.text();
+      var raw  = await res.text();
       var data;
       try { data = JSON.parse(raw); } catch(e) { throw new Error('Backend returned non-JSON. First characters: ' + raw.slice(0,200)); }
       if (!res.ok || data.error) throw new Error(data.error || ('HTTP ' + res.status));
 
-      baseLineEl.textContent = rangeLine(data.ranges && data.ranges.base) || '—';
+      baseLineEl.textContent  = rangeLine(data.ranges && data.ranges.base)  || '—';
       totalLineEl.textContent = rangeLine(data.ranges && data.ranges.total) || '—';
       confidenceEl.textContent = computeConfidence(payload);
       renderPositionSnapshot(payload, data);
