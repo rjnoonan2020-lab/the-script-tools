@@ -710,8 +710,10 @@ function renderWithBold(text) {
       var data = await resp.json();
       if (!resp.ok) throw new Error(data.error || 'Request failed');
       outputEl.innerHTML = data.coverLetter
-        .split(/\n\n+/)
-        .map(function(p) { return '<p style="margin:0 0 10px 0;">' + p.replace(/\n/g,' ').trim() + '</p>'; })
+        .split(/\n+/)
+        .map(function(p) { return p.trim(); })
+        .filter(function(p) { return p.length > 0; })
+        .map(function(p) { return '<p style="margin:0 0 12px 0;">' + p + '</p>'; })
         .join('');
       outputWrap.style.display = 'block';
       enableCopy(true);
