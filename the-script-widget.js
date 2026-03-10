@@ -401,7 +401,7 @@
     wrap.innerHTML = `
       <div class="ts-tool-title">Cover Letter Creator</div>
       <div class="ts-tool-desc">Paste the job description and your resume. Click Generate.</div>
-      <div class="ts-field"><label>Job description <span class="ts-req">*</span></label><textarea id="ts-cl-job" placeholder="Paste the job description here…"></textarea></div>
+      <div class="ts-field"><label>Job description <span class="ts-req">*</span></label><textarea id="ts-cl-job" placeholder="Paste the full job description here — including any text hidden behind a 'See more' button…"></textarea></div>
       <div class="ts-field"><label>Your resume <span class="ts-req">*</span></label><textarea id="ts-cl-resume" placeholder="Paste your resume here…"></textarea></div>
       <div class="ts-btn-row">
         <button class="ts-btn-primary" id="ts-cl-gen">Generate cover letter</button>
@@ -464,8 +464,8 @@
     wrap.innerHTML = `
       <div class="ts-tool-title">Thank-You Email Writer</div>
       <div class="ts-tool-desc">Paste the job description and resume, add one memorable interview detail.</div>
-      <div class="ts-field"><label>Job description <span class="ts-req">*</span></label><textarea id="ts-ty-job" placeholder="Paste the job description here…"></textarea></div>
-      <div class="ts-field"><label>Your resume <span class="ts-req">*</span></label><textarea id="ts-ty-resume" placeholder="Paste your resume here…"></textarea></div>
+      <div class="ts-field"><label>Job description <span class="ts-req">*</span></label><textarea id="ts-ty-job" placeholder="Paste the full job description here — including any text hidden behind a 'See more' button…"></textarea></div>
+      <div class="ts-field"><label>Your resume placeholder="Paste your resume here…"></textarea></div>
       <div class="ts-field"><label>Memorable interview detail <span class="ts-req">*</span></label><textarea id="ts-ty-note" style="min-height:80px;" placeholder="e.g. They mentioned a need for better reporting; I shared how I reduced prep time by 30%…"></textarea></div>
       <div class="ts-field" style="max-width:180px;"><label>Tone</label><select id="ts-ty-tone"><option value="warm">Warm</option><option value="formal">Formal</option><option value="energized">Energized</option></select></div>
       <div class="ts-btn-row">
@@ -536,7 +536,7 @@
         <div class="ts-field"><label>Role stage</label><select id="ts-iq-stage"><option value="ic">Individual Contributor</option><option value="manager">Manager</option><option value="director" selected>Director</option><option value="vp">VP</option></select></div>
         <div class="ts-field"><label>Seniority</label><select id="ts-iq-seniority"><option value="junior">Junior</option><option value="mid" selected>Mid</option><option value="exec">Exec</option></select></div>
       </div>
-      <div class="ts-field"><label>Job description <span class="ts-req">*</span></label><textarea id="ts-iq-job" placeholder="Paste the job description here…"></textarea></div>
+      <div class="ts-field"><label>Job description <span class="ts-req">*</span></label><textarea id="ts-iq-job" placeholder="Paste the full job description here — including any text hidden behind a 'See more' button…"></textarea></div>
       <div class="ts-field"><label>Resume <span style="font-weight:400;color:${SLATE}">(optional)</span></label><textarea id="ts-iq-resume" placeholder="Paste your resume here (optional)…"></textarea></div>
       <div class="ts-btn-row">
         <button class="ts-btn-primary" id="ts-iq-gen">Generate questions</button>
