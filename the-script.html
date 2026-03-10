@@ -514,15 +514,17 @@
         <div class="field"><label>Your resume <span class="req">*</span></label><textarea id="cl_resume" placeholder="Paste your resume here…"></textarea></div>
         <div class="btn-row">
           <button class="btn-primary" id="cl_generate">Generate cover letter</button>
-          <button class="btn-secondary" id="cl_copy" disabled>Copy to clipboard</button>
           <button class="btn-secondary" id="cl_clear">Clear</button>
         </div>
         <div class="status-line" id="cl_status"></div>
         <div class="output-wrap" id="cl_output_wrap" style="display:none;">
           <div class="output-label">Your cover letter</div>
           <div class="output-box" id="cl_output"></div>
+          <div class="btn-row" style="margin-top:12px;">
+            <button class="btn-secondary" id="cl_copy" disabled>Copy to clipboard</button>
+          </div>
         </div>
-        <div class="tip">💡 Tip: Review and personalize this draft before sending. This tool is designed to reduce writing time and support your thinking, not to replace your personal voice or judgment.</div>
+        <div class="tip">💡 Tip: Review and personalize this draft before sending. This tool is designed to reduce writing time and support your thinking — not to replace your personal voice or judgment.</div>
       </div>
     </div>
   </div>
@@ -707,7 +709,7 @@ function renderWithBold(text) {
       });
       var data = await resp.json();
       if (!resp.ok) throw new Error(data.error || 'Request failed');
-      outputEl.textContent = data.coverLetter;
+      outputEl.textContent = data.coverLetter.replace(/\n{3,}/g, '\n\n');
       outputWrap.style.display = 'block';
       enableCopy(true);
       statusEl.textContent = '';
