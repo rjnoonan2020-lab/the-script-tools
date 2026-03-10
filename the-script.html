@@ -524,7 +524,7 @@
             <button class="btn-secondary" id="cl_copy" disabled>Copy to clipboard</button>
           </div>
         </div>
-        <div class="tip">💡 Tip: Review and personalize this draft before sending. This tool is designed to reduce writing time and support your thinking — not to replace your personal voice or judgment.</div>
+        <div class="tip" id="cl_tip" style="display:none;">💡 Tip: Review and personalize this draft before sending. This tool is designed to reduce writing time and support your thinking — not to replace your personal voice or judgment.</div>
       </div>
     </div>
   </div>
@@ -717,6 +717,7 @@ function renderWithBold(text) {
         .join('');
       outputWrap.style.display = 'block';
       enableCopy(true);
+      document.getElementById('cl_tip').style.display = 'block';
       statusEl.textContent = '';
     } catch(err) {
       statusEl.textContent = 'Error: ' + err.message;
