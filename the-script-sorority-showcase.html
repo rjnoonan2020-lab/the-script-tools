@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Script™ for Sororities — Third Act Advisors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,500;1,700&family=Nunito+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --sage:    #3d6b4f;
+      --sage-d:  #2c5039;
+      --sage-lt: #eef4f0;
+      --blush:   #c4785a;
+      --blush-lt:#f5ede8;
+      --cream:   #faf8f4;
+      --white:   #ffffff;
+      --border:  #e4ddd4;
+      --text:    #1e1c1a;
+      --mid:     #6b6460;
+      --soft:    #8a8380;
+      --shadow:  0 2px 20px rgba(0,0,0,0.07);
+    }
+    body { font-family: 'Nunito Sans', sans-serif; background: var(--cream); color: var(--text); }
+
+    /* HEADER */
+    .header { background: var(--sage-d); padding: 0 48px; height: 68px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .logo { display: flex; align-items: baseline; gap: 10px; }
+    .logo-mark { font-family: 'Lora', serif; font-size: 22px; font-weight: 700; color: #fff; }
+    .logo-mark .tm { color: var(--blush); font-size: 11px; vertical-align: super; font-family: 'Nunito Sans', sans-serif; }
+    .logo-sub { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 1.5px; text-transform: uppercase; }
+    .header-link { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .header-link:hover { color: #fff; }
+
+    /* HERO */
+    .hero { background: linear-gradient(160deg, var(--sage-d), var(--sage)); padding: 80px 48px 72px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: 'ΑΒΓ'; position: absolute; font-family: 'Lora', serif; font-size: 340px; font-weight: 700; color: rgba(255,255,255,0.025); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; letter-spacing: -15px; }
+    .hero-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--blush); margin-bottom: 16px; opacity: 0.9; }
+    .hero h1 { font-family: 'Lora', serif; font-size: clamp(36px, 5vw, 58px); font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 18px; letter-spacing: -0.5px; }
+    .hero h1 em { font-style: italic; color: #c8dfc8; }
+    .hero-desc { font-size: 17px; color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto 32px; line-height: 1.7; font-weight: 300; }
+    .hero-pills { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
+    .hero-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 30px; padding: 7px 16px; font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 600; }
+    .hero-pill strong { color: #c8dfc8; }
+    .hero-cta { display: inline-block; background: var(--blush); color: #fff; padding: 15px 36px; border-radius: 10px; font-size: 15px; font-weight: 800; text-decoration: none; transition: background 0.15s, transform 0.1s; }
+    .hero-cta:hover { background: #b3684a; transform: scale(1.02); }
+
+    /* TOOLS */
+    .tools-section { max-width: 1040px; margin: 0 auto; padding: 72px 40px; }
+    .section-intro { text-align: center; margin-bottom: 48px; }
+    .section-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blush); margin-bottom: 10px; }
+    .section-title { font-family: 'Lora', serif; font-size: 34px; font-weight: 700; color: var(--sage-d); margin-bottom: 12px; letter-spacing: -0.3px; }
+    .section-desc { font-size: 16px; color: var(--mid); max-width: 520px; margin: 0 auto; line-height: 1.65; }
+
+    .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    @media (max-width: 700px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 26px; box-shadow: var(--shadow); border-top: 4px solid var(--sage); transition: transform 0.18s, box-shadow 0.18s; }
+    .tool-card:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,0,0,0.10); }
+    .tool-card:nth-child(2) { border-top-color: var(--blush); }
+    .tool-card:nth-child(3) { border-top-color: #7aad8c; }
+    .tool-card:nth-child(4) { border-top-color: #c4945a; }
+    .tool-icon { font-size: 28px; margin-bottom: 14px; }
+    .tool-name { font-family: 'Lora', serif; font-size: 19px; font-weight: 700; color: var(--sage-d); margin-bottom: 8px; }
+    .tool-desc { font-size: 13px; color: var(--mid); line-height: 1.65; margin-bottom: 14px; }
+    .tool-features { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .tool-features li { font-size: 12px; color: var(--text); display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+    .tool-features li::before { content: '✦'; color: var(--blush); font-size: 9px; flex-shrink: 0; margin-top: 3px; }
+
+    /* WHY */
+    .why-section { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 72px 40px; }
+    .why-inner { max-width: 1040px; margin: 0 auto; }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-top: 48px; }
+    @media (max-width: 800px) { .why-grid { grid-template-columns: 1fr; } }
+    .why-card { text-align: center; padding: 0 12px; }
+    .why-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--sage-lt); border: 2px solid var(--sage); display: flex; align-items: center; justify-content: center; font-size: 22px; margin: 0 auto 16px; }
+    .why-title { font-family: 'Lora', serif; font-size: 19px; font-weight: 700; color: var(--sage-d); margin-bottom: 8px; }
+    .why-desc { font-size: 14px; color: var(--mid); line-height: 1.65; }
+
+    /* PRICING */
+    .pricing-section { max-width: 1040px; margin: 0 auto; padding: 72px 40px; }
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    @media (max-width: 700px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+    .pricing-tier { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 30px; box-shadow: var(--shadow); position: relative; }
+    .pricing-tier.featured { border-color: var(--sage); box-shadow: 0 8px 36px rgba(61,107,79,0.15); }
+    .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--sage); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 16px; border-radius: 20px; white-space: nowrap; }
+    .tier-name { font-family: 'Lora', serif; font-size: 22px; font-weight: 700; color: var(--sage-d); margin-bottom: 6px; }
+    .tier-desc { font-size: 13px; color: var(--mid); margin-bottom: 22px; line-height: 1.5; }
+    .tier-divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+    .price-bands { display: flex; flex-direction: column; gap: 9px; margin-bottom: 22px; }
+    .price-band { display: flex; justify-content: space-between; align-items: center; padding: 9px 13px; background: var(--sage-lt); border-radius: 8px; border: 1px solid #d4e8da; }
+    .band-label { font-size: 12px; color: var(--mid); font-weight: 600; }
+    .band-price { font-size: 15px; font-weight: 800; color: var(--sage-d); }
+    .band-price span { font-size: 11px; font-weight: 400; color: var(--soft); }
+    .tier-features { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 26px; }
+    .tier-features li { font-size: 13px; color: var(--text); display: flex; align-items: flex-start; gap: 9px; line-height: 1.4; }
+    .tier-features li::before { content: '✦'; color: var(--sage); font-size: 10px; flex-shrink: 0; margin-top: 2px; }
+    .tier-features li.muted { color: var(--soft); }
+    .tier-features li.muted::before { color: #cbd5e1; }
+    .tier-cta { display: block; text-align: center; padding: 13px 20px; border-radius: 10px; font-size: 14px; font-weight: 800; text-decoration: none; transition: background 0.15s; }
+    .tier-cta.primary { background: var(--sage-d); color: #fff; }
+    .tier-cta.primary:hover { background: var(--sage); }
+    .tier-cta.featured-btn { background: var(--blush); color: #fff; }
+    .tier-cta.featured-btn:hover { background: #b3684a; }
+
+    /* DEMO CTA */
+    .demo-section { background: linear-gradient(135deg, var(--sage-d), var(--sage)); padding: 72px 48px; text-align: center; }
+    .demo-greek { font-family: 'Lora', serif; font-size: 52px; font-style: italic; color: rgba(255,255,255,0.12); margin-bottom: 8px; letter-spacing: 8px; }
+    .demo-title { font-family: 'Lora', serif; font-size: 34px; font-weight: 700; color: #fff; margin-bottom: 14px; letter-spacing: -0.3px; }
+    .demo-desc { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto 28px; line-height: 1.65; }
+    .demo-cta { display: inline-block; background: var(--blush); color: #fff; padding: 15px 36px; border-radius: 10px; font-size: 15px; font-weight: 800; text-decoration: none; transition: background 0.15s, transform 0.1s; }
+    .demo-cta:hover { background: #b3684a; transform: scale(1.02); }
+
+    /* FOOTER */
+    footer { background: var(--sage-d); color: rgba(255,255,255,0.4); text-align: center; padding: 28px 48px; font-size: 12px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: var(--blush); }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark">The Script<span class="tm">™</span></div>
+    <div class="logo-sub">for Sororities</div>
+  </div>
+  <a href="https://thirdactadvisors.com" target="_blank" class="header-link">Powered by Third Act Advisors →</a>
+</header>
+
+<div class="hero">
+  <div class="hero-eyebrow">✦ A Member Benefit Your Sisters Will Actually Use</div>
+  <h1>Give your sisters the tools<br>to land the job — <em>not just the wish.</em></h1>
+  <p class="hero-desc">The Script™ is an AI-powered career writing toolkit your national office can offer as an exclusive member benefit — available 24/7, no appointment needed, white-label ready.</p>
+  <div class="hero-pills">
+    <div class="hero-pill">✦ No login required</div>
+    <div class="hero-pill">✦ Results in <strong>under 2 minutes</strong></div>
+    <div class="hero-pill">✦ White-label available</div>
+    <div class="hero-pill">✦ Flat monthly fee · no per-member pricing</div>
+  </div>
+  <a href="#pricing" class="hero-cta">View Pricing →</a>
+</div>
+
+<div class="tools-section">
+  <div class="section-intro">
+    <div class="section-eyebrow">✦ Four Tools · One Widget</div>
+    <div class="section-title">Everything she needs to land the job.</div>
+    <p class="section-desc">The writing tasks shouldn't be what stands between your members and their first job. The Script™ clears the path.</p>
+  </div>
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-icon">✉️</div>
+      <div class="tool-name">Cover Letter Creator</div>
+      <div class="tool-desc">Paste the job description and her resume. Get a tailored, professional cover letter in seconds — not hours.</div>
+      <ul class="tool-features">
+        <li>Tailored to the specific role and company</li>
+        <li>Draws from her actual experience</li>
+        <li>Concise, professional, ready to personalize</li>
+        <li>One-click copy to clipboard</li>
+      </ul>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">🤝</div>
+      <div class="tool-name">Thank-You Email Writer</div>
+      <div class="tool-desc">A thoughtful follow-up email that references a real moment from the interview — in under two minutes.</div>
+      <ul class="tool-features">
+        <li>Warm, professional tone options</li>
+        <li>References a specific interview detail</li>
+        <li>Reinforces fit and genuine enthusiasm</li>
+        <li>Ready before she even leaves the parking lot</li>
+      </ul>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">💬</div>
+      <div class="tool-name">Interview Question Generator</div>
+      <div class="tool-desc">12 likely interview questions organized into three smart categories — tailored to the actual job description.</div>
+      <ul class="tool-features">
+        <li>Based on the real job posting</li>
+        <li>Grouped by theme for focused prep</li>
+        <li>Works for any role or industry</li>
+        <li>Optional resume input for deeper tailoring</li>
+      </ul>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">💰</div>
+      <div class="tool-name">Compensation Benchmarking</div>
+      <div class="tool-desc">Market salary ranges by role, level, and city — so she walks into every offer conversation informed.</div>
+      <ul class="tool-features">
+        <li>Base and total comp range estimates</li>
+        <li>Covers 10+ industries and all career levels</li>
+        <li>Plain-language context and advisory notes</li>
+        <li>Helps her understand what she's worth</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="why-section">
+  <div class="why-inner">
+    <div class="section-intro">
+      <div class="section-eyebrow">✦ Why It Matters</div>
+      <div class="section-title">The career office can't be everywhere at once.</div>
+      <p class="section-desc">During peak recruiting season, your career office is stretched thin. Members who need the most help often get it the least. The Script™ fills that gap — on her schedule, not office hours.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🕐</div>
+        <div class="why-title">Always Available</div>
+        <div class="why-desc">A sister with an interview tomorrow at 11pm can't wait for office hours. The Script™ is there when she needs it most.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <div class="why-title">Under 2 Minutes</div>
+        <div class="why-desc">No scheduling, no intake forms. Paste the job description, paste her resume, click Generate. Done and ready to personalize.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎀</div>
+        <div class="why-title">Your Brand, Your Sisters</div>
+        <div class="why-desc">White-label it completely. Members see your organization's name and colors — it feels like a native sisterhood benefit, not a third-party tool.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pricing-section" id="pricing">
+  <div class="section-intro">
+    <div class="section-eyebrow">✦ Simple Pricing</div>
+    <div class="section-title">Priced by membership size. Not per sister.</div>
+    <p class="section-desc">One flat monthly subscription covers your entire membership. No per-use fees, no usage caps, no surprises at the end of the month.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-tier">
+      <div class="tier-name">The Script™ Branded</div>
+      <div class="tier-desc">The Script™ branding on the widget. Full tool access for all members. Simple embed code for your member portal.</div>
+      <hr class="tier-divider" />
+      <div class="price-bands">
+        <div class="price-band"><div class="band-label">Up to 5,000 members</div><div class="band-price">$149<span>/mo</span></div></div>
+        <div class="price-band"><div class="band-label">5,000–20,000 members</div><div class="band-price">$299<span>/mo</span></div></div>
+        <div class="price-band"><div class="band-label">20,000+ members</div><div class="band-price">$499<span>/mo</span></div></div>
+      </div>
+      <ul class="tier-features">
+        <li>All four career tools included</li>
+        <li>Unlimited member usage</li>
+        <li>One-line embed code for your portal</li>
+        <li>The Script™ branding on widget</li>
+        <li>Email support</li>
+        <li class="muted">Your organization's name & logo</li>
+        <li class="muted">Custom colors</li>
+      </ul>
+    </div>
+    <div class="pricing-tier featured">
+      <div class="pricing-badge">✦ Most Popular</div>
+      <div class="tier-name">White-Label Premium</div>
+      <div class="tier-desc">Fully branded to your organization. Members see your name, your colors, your identity — not ours.</div>
+      <hr class="tier-divider" />
+      <div class="price-bands">
+        <div class="price-band"><div class="band-label">Up to 5,000 members</div><div class="band-price">$299<span>/mo</span></div></div>
+        <div class="price-band"><div class="band-label">5,000–20,000 members</div><div class="band-price">$449<span>/mo</span></div></div>
+        <div class="price-band"><div class="band-label">20,000+ members</div><div class="band-price">$649<span>/mo</span></div></div>
+      </div>
+      <ul class="tier-features">
+        <li>All four career tools included</li>
+        <li>Unlimited member usage</li>
+        <li>One-line embed code for your portal</li>
+        <li>Your organization's name on widget</li>
+        <li>Custom colors & logo</li>
+        <li>Priority email & phone support</li>
+        <li>Onboarding & setup assistance</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="demo-section">
+  <div class="demo-greek">ΑΒΓ</div>
+  <div class="demo-title">See it live on a sorority site</div>
+  <p class="demo-desc">We built a fictional national sorority demo so you can experience exactly what your members would see when they open The Script™.</p>
+  <a href="./the-script-aks-demo.html" class="demo-cta">View ΑΚΣ Widget Demo →</a>
+</div>
+
+<footer>
+  <div>© 2026 Third Act Advisors, LLC &nbsp;·&nbsp; <a href="https://thirdactadvisors.com/privacy-policy" target="_blank">Privacy Policy</a> &nbsp;·&nbsp; <a href="https://thirdactadvisors.com/terms-and-con
