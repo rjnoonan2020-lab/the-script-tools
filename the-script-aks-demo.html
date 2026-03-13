@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alpha Kappa Sigma — ΑΚΣ International Headquarters</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,500;1,700&family=Nunito+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose-d:    #6B1F3A;
+      --rose:      #9B3A5A;
+      --rose-lt:   #F9EEF2;
+      --rose-mid:  #E8C5D0;
+      --off-white: #fdf9f7;
+      --border-lt: #f2ecee;
+      --white:     #ffffff;
+      --border:    #e8dce0;
+      --text:      #1a1014;
+      --mid:       #5a4850;
+      --soft:      #8a7880;
+    }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── UTILITY BAR ── */
+    .utility-bar {
+      background: var(--rose-d);
+      padding: 9px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.5px;
+    }
+    .utility-links { display: flex; gap: 20px; }
+    .utility-links a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.15s; }
+    .utility-links a:hover { color: #fff; }
+
+    /* ── NAV ── */
+    nav {
+      background: #fff;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .nav-crest {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--rose);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--rose-mid);
+    }
+
+    .nav-crest-text {
+      font-family: 'Lora', serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-wordmark { line-height: 1.2; }
+    .nav-name {
+      font-family: 'Lora', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--rose-d);
+      letter-spacing: -0.2px;
+    }
+    .nav-sub {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rose);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--text);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .nav-links a:hover { background: var(--rose-lt); color: var(--rose-d); }
+
+    .nav-cta {
+      background: var(--rose) !important;
+      color: #fff !important;
+      border-radius: 8px !important;
+      padding: 9px 18px !important;
+    }
+    .nav-cta:hover { background: var(--rose-d) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--white);
+      border-bottom: 3px solid var(--rose-lt);
+      min-height: 480px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-left {
+      padding: 72px 56px 72px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-left::after {
+      content: 'ΑΚΣ';
+      position: absolute;
+      font-family: 'Lora', serif;
+      font-size: 260px;
+      font-weight: 700;
+      color: rgba(107,31,58,0.04);
+      bottom: -40px;
+      left: 20px;
+      pointer-events: none;
+      letter-spacing: -10px;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(32px, 4vw, 50px);
+      font-weight: 700;
+      color: var(--rose-d);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero h1 em { font-style: italic; color: var(--rose); }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--mid);
+      line-height: 1.75;
+      margin-bottom: 32px;
+      font-weight: 400;
+      max-width: 440px;
+    }
+
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn-blush {
+      background: var(--rose-d);
+      color: #fff;
+      padding: 13px 26px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: background 0.15s;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+    .btn-blush:hover { background: var(--rose); }
+
+    .btn-ghost-light {
+      background: var(--white);
+      border: 1.5px solid var(--rose-mid);
+      color: var(--rose-d);
+      padding: 13px 26px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: border-color 0.15s, background 0.15s;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+    .btn-ghost-light:hover { border-color: var(--rose); background: var(--rose-lt); }
+
+    .hero-right {
+      background: var(--rose-lt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right-inner {
+      text-align: center;
+      padding: 48px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-mission-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 20px;
+    }
+
+    .hero-mission-text {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--rose-d);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .hero-mission-attr {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--soft);
+    }
+
+    .hero-crest-large {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--rose-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      font-family: 'Lora', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--rose-d);
+    }
+
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+    }
+
+    /* ── STATS ── */
+    .stats-row {
+      background: var(--rose-d);
+      padding: 22px 48px;
+      display: flex;
+      justify-content: center;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
+
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Lora', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+    .stat-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 4px; }
+
+    /* ── PILLARS ── */
+    .pillars {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 32px 48px;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .pillar {
+      text-align: center;
+      padding: 0 40px;
+      border-right: 1px solid var(--border);
+    }
+    .pillar:last-child { border-right: none; }
+
+    .pillar-icon { font-size: 22px; margin-bottom: 6px; }
+    .pillar-name {
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--rose-d);
+      letter-spacing: -0.2px;
+    }
+    .pillar-sub { font-size: 11px; color: var(--soft); margin-top: 2px; }
+
+    /* ── MAIN ── */
+    .main {
+      max-width: 1120px;
+      margin: 52px auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 48px;
+    }
+
+    @media (max-width: 860px) { .main { grid-template-columns: 1fr; } }
+
+    /* ── SECTION HEADERS ── */
+    .section-hd {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--rose-d);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--rose);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-hd-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rose); flex-shrink: 0; }
+
+    /* ── CARD GRID ── */
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 36px; }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.10); }
+
+    .card-top {
+      height: 8px;
+      background: var(--rose);
+    }
+    .card-top.blush { background: var(--rose); }
+    .card-top.sage-lt { background: var(--rose-mid); }
+    .card-top.warm { background: var(--rose); }
+
+    .card-body { padding: 22px; }
+
+    .card-tag {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.35;
+      cursor: pointer;
+    }
+    .card-title:hover { color: var(--rose-d); }
+
+    .card-date { font-size: 11px; color: var(--soft); margin-bottom: 8px; font-weight: 600; }
+    .card-desc { font-size: 13px; color: var(--mid); line-height: 1.6; }
+
+    .card-link {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--rose);
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+    .card-link:hover { color: var(--rose-d); }
+
+    /* ── QUOTE ── */
+    .quote-block {
+      background: var(--rose-lt);
+      border-left: 4px solid var(--rose);
+      border-radius: 0 12px 12px 0;
+      padding: 28px 32px;
+      margin: 8px 0 32px;
+    }
+
+    .quote-text {
+      font-family: 'Lora', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--rose-d);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .quote-attr { font-size: 12px; font-weight: 800; color: var(--rose); letter-spacing: 0.5px; }
+
+    /* ── NEWS LIST ── */
+    .news-list { display: flex; flex-direction: column; gap: 0; }
+    .news-row {
+      display: flex;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .news-row:last-child { border-bottom: none; }
+
+    .news-date {
+      flex-shrink: 0;
+      width: 44px;
+      background: var(--rose);
+      border-radius: 8px;
+      text-align: center;
+      padding: 7px 4px;
+    }
+    .nd-month { font-size: 8px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.65); }
+    .nd-day { font-family: 'Lora', serif; font-size: 22px; font-weight: 700; color: #fff; line-height: 1; }
+
+    .news-body { flex: 1; }
+    .news-tag2 { font-size: 9px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--rose); margin-bottom: 4px; }
+    .news-title2 { font-family: 'Lora', serif; font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; cursor: pointer; }
+    .news-title2:hover { color: var(--rose-d); }
+    .news-desc2 { font-size: 12px; color: var(--mid); line-height: 1.55; }
+
+    /* ── SIDEBAR ── */
+    .sidebar-block {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .sidebar-block h3 {
+      font-family: 'Lora', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-links { list-style: none; display: flex; flex-direction: column; }
+    .sidebar-links li a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .sidebar-links li:last-child a { border-bottom: none; }
+    .sidebar-links li a:hover { color: var(--rose-d); }
+    .sidebar-links li a .arrow { color: var(--soft); font-size: 12px; }
+
+    /* ── SCRIPT SIDEBAR ── */
+    .script-sidebar {
+      background: linear-gradient(160deg, var(--rose-d) 0%, var(--rose) 100%);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .script-sidebar::after {
+      content: 'ΑΚΣ';
+      position: absolute;
+      font-family: 'Lora', serif;
+      font-size: 100px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.04);
+      bottom: -10px;
+      right: 8px;
+      pointer-events: none;
+    }
+
+    .script-eyebrow {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 4px;
+    }
+
+    .script-badge {
+      display: inline-block;
+      background: var(--rose);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .script-sidebar h3 {
+      font-family: 'Lora', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .script-sidebar p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .script-tool-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 18px;
+    }
+
+    .script-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .script-open-btn {
+      display: block;
+      background: var(--rose);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 13px 20px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      width: 100%;
+      font-family: 'Nunito Sans', sans-serif;
+      letter-spacing: 0.3px;
+      transition: background 0.15s;
+    }
+    .script-open-btn:hover { background: #9B3A5A; }
+
+    /* ── PHILANTHROPY BLOCK ── */
+    .phil-block {
+      background: var(--rose-lt);
+      border: 1px solid var(--rose-mid);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+    .phil-block h3 {
+      font-family: 'Lora', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .phil-block p { font-size: 13px; color: var(--mid); line-height: 1.6; margin-bottom: 16px; }
+    .btn-sage {
+      display: block;
+      text-align: center;
+      background: var(--rose);
+      color: #fff;
+      border-radius: 8px;
+      padding: 11px 20px;
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-sage:hover { background: var(--rose-d); }
+
+    /* ── FOOTER ── */
+    .footer-top {
+      background: var(--rose-d);
+      padding: 52px 64px 40px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    @media (max-width: 800px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+
+    .footer-brand .f-logo {
+      font-family: 'Lora', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 260px; }
+    .footer-brand .f-addr { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 14px; line-height: 1.7; }
+
+    .footer-col h4 {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .footer-col li a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.15s; }
+    .footer-col li a:hover { color: rgba(255,255,255,0.9); }
+
+    .footer-bottom {
+      background: var(--rose-d);
+      padding: 16px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--rose); }
+
+    /* ── PRICING ── */
+    .pricing-section { max-width: 1040px; margin: 0 auto; padding: 72px 40px; }
+    .pricing-intro { text-align: center; margin-bottom: 48px; }
+    .pricing-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--rose); margin-bottom: 12px; }
+    .pricing-title { font-family: 'Lora', serif; font-size: clamp(24px,3vw,34px); font-weight: 700; color: var(--rose-d); margin-bottom: 10px; }
+    .pricing-desc { font-size: 15px; color: var(--mid); line-height: 1.65; max-width: 520px; margin: 0 auto; }
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    @media (max-width: 700px) { .pricing-grid { grid-template-columns: 1fr; } }
+    .pricing-tier { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 32px; box-shadow: 0 2px 20px rgba(0,0,0,0.07); position: relative; }
+    .pricing-tier.featured { border-color: var(--rose); box-shadow: 0 8px 40px rgba(155,58,90,0.2); }
+    .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--rose); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 16px; border-radius: 20px; white-space: nowrap; }
+    .tier-name { font-family: 'Lora', serif; font-size: 24px; font-weight: 700; color: var(--rose-d); margin-bottom: 6px; }
+    .tier-desc { font-size: 13px; color: var(--soft); margin-bottom: 24px; line-height: 1.5; }
+    .tier-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+    .price-bands { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .price-band { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: var(--rose-lt); border-radius: 10px; border: 1px solid var(--border); }
+    .band-label { font-size: 12px; color: var(--soft); font-weight: 500; }
+    .band-price { font-size: 15px; font-weight: 700; color: var(--rose-d); }
+    .band-price span { font-size: 11px; font-weight: 400; color: var(--mid); }
+    .tier-features { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 28px; }
+    .tier-features li { font-size: 13px; color: var(--text); display: flex; align-items: flex-start; gap: 9px; line-height: 1.4; }
+    .tier-features li::before { content: '✦'; color: var(--rose); font-size: 10px; flex-shrink: 0; margin-top: 2px; }
+    .tier-cta { display: block; text-align: center; padding: 13px 20px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; font-family: 'Nunito Sans', sans-serif; transition: background 0.15s; }
+    .tier-cta.primary { background: var(--rose-d); color: #fff; }
+    .tier-cta.primary:hover { background: var(--rose); }
+    .tier-cta.accent { background: var(--rose); color: #fff; }
+    .tier-cta.accent:hover { background: #9B3A5A; }
+
+    /* ── FAB WIDGET BUTTON ── */
+    .ts-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 200;
+      background: var(--rose-d);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 22px;
+      font-size: 13px;
+      font-weight: 800;
+      font-family: 'Nunito Sans', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(107,31,58,0.35);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+      letter-spacing: 0.3px;
+    }
+    .ts-fab:hover { background: var(--rose); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(107,31,58,0.4); }
+    .ts-fab-dot { width: 8px; height: 8px; background: var(--rose-mid); border-radius: 50%; flex-shrink: 0; }
+
+    .social-links { display: flex; gap: 14px; margin-top: 16px; }
+    .social-links a {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; text-decoration: none;
+      transition: background 0.15s;
+    }
+    .social-links a:hover { background: var(--rose); }
+  </style>
+</head>
+<body>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div>Alpha Kappa Sigma · Building Confident Women of Purpose Since 1922</div>
+  <div class="utility-links">
+    <a href="#">Life Loyal</a>
+    <a href="#">Shop ΑΚΣ</a>
+    <a href="#">Contact</a>
+    <a href="#">Donate</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-crest"><div class="nav-crest-text">ΑΚΣ</div></div>
+    <div class="nav-wordmark">
+      <div class="nav-name">Alpha Kappa Sigma</div>
+      <div class="nav-sub">International Headquarters</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#">About Us</a>
+    <a href="#">Join</a>
+    <a href="#">Alumnae</a>
+    <a href="#">Philanthropy</a>
+    <a href="#">Events</a>
+    <a href="#" class="nav-cta">Member Portal</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">✦ International Headquarters · Est. 1922</div>
+    <h1>Sisters.<br>Scholars.<br><em>Leaders.</em></h1>
+    <p class="hero-desc">Alpha Kappa Sigma builds confident women of purpose — connected by sisterhood, driven by scholarship, and committed to making a difference in the world around them.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-blush">Join ΑΚΣ</a>
+      <a href="#" class="btn-ghost-light">Find Your Chapter</a>
+      <a href="#pricing" class="btn-ghost-light">View Member Pricing →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-inner">
+      <div class="hero-crest-large">ΑΚΣ</div>
+      <div class="hero-mission-label">Our Mission</div>
+      <div class="hero-mission-text">"We build confident women of purpose who<br>celebrate sisterhood and lead with<br>courage in every chapter of life."</div>
+      <div class="hero-mission-attr">Alpha Kappa Sigma · Mission Statement</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat"><div class="stat-num">36,000+</div><div class="stat-label">Active Members</div></div>
+  <div class="stat"><div class="stat-num">248</div><div class="stat-label">Active Chapters</div></div>
+  <div class="stat"><div class="stat-num">160</div><div class="stat-label">Universities</div></div>
+  <div class="stat"><div class="stat-num">102 Yrs</div><div class="stat-label">Of Sisterhood</div></div>
+</div>
+
+<!-- PILLARS -->
+<div class="pillars">
+  <div class="pillar"><div class="pillar-icon">📖</div><div class="pillar-name">Scholarship</div><div class="pillar-sub">Academic Excellence</div></div>
+  <div class="pillar"><div class="pillar-icon">🤝</div><div class="pillar-name">Sisterhood</div><div class="pillar-sub">Lifelong Connection</div></div>
+  <div class="pillar"><div class="pillar-icon">🌿</div><div class="pillar-name">Service</div><div class="pillar-sub">Community Impact</div></div>
+  <div class="pillar"><div class="pillar-icon">🌟</div><div class="pillar-name">Leadership</div><div class="pillar-sub">Personal Growth</div></div>
+  <div class="pillar"><div class="pillar-icon">💼</div><div class="pillar-name">Career</div><div class="pillar-sub">Professional Success</div></div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- LEFT -->
+  <div>
+    <div class="section-hd"><div class="section-hd-dot"></div> Featured News</div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-top"></div>
+        <div class="card-body">
+          <div class="card-tag">✦ Member Benefit</div>
+          <div class="card-title">The Script™ Is Now Available to All ΑΚΣ Members</div>
+          <div class="card-date">March 2026 · Career Resources</div>
+          <div class="card-desc">ΑΚΣ has partnered with Third Act Advisors to bring sisters exclusive access to The Script™ — AI-powered cover letters, interview prep, and more. No appointment needed.</div>
+          <a class="card-link" href="#">Try it now →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top blush"></div>
+        <div class="card-body">
+          <div class="card-tag">🌸 Philanthropy</div>
+          <div class="card-title">ΑΚΣ Gives Day — April 22nd</div>
+          <div class="card-date">April 22, 2026 · Foundation</div>
+          <div class="card-desc">Join sisters nationwide in our annual day of giving. Every dollar supports scholarship programs and leadership development for our members.</div>
+          <a class="card-link" href="#">Give today →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top sage-lt"></div>
+        <div class="card-body">
+          <div class="card-tag">🎓 Leadership</div>
+          <div class="card-title">RISE Leadership Academy — Applications Open</div>
+          <div class="card-date">Deadline April 10, 2026</div>
+          <div class="card-desc">Our flagship leadership program for collegiate members. Three days of workshops, mentorship, and sisterhood. Applications close April 10.</div>
+          <a class="card-link" href="#">Apply now →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top warm"></div>
+        <div class="card-body">
+          <div class="card-tag">📅 Events</div>
+          <div class="card-title">Alumnae Networking Dinner — Chicago</div>
+          <div class="card-date">March 24, 2026 · Chicago, IL</div>
+          <div class="card-desc">Connect with ΑΚΣ alumnae across industries at an intimate dinner for sisters in the greater Chicago area. RSVP required — space is limited.</div>
+          <a class="card-link" href="#">RSVP →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUOTE -->
+    <div class="quote-block">
+      <div class="quote-text">"ΑΚΣ gave me my closest friends and my first professional network. When I was job searching, sisters showed up. They reviewed my resume, made introductions, and helped me land my first offer. That's the power of this sisterhood."</div>
+      <div class="quote-attr">Sister Meredith Caldwell · Theta Chapter · Class of 2018 · Senior Manager, Deloitte</div>
+    </div>
+
+    <div class="section-hd"><div class="section-hd-dot"></div> Upcoming Events</div>
+
+    <div class="news-list">
+      <div class="news-row">
+        <div class="news-date">
+          <div class="nd-month">Mar</div>
+          <div class="nd-day">18</div>
+        </div>
+        <div class="news-body">
+          <div class="news-tag2">Career · Virtual</div>
+          <div class="news-title2">Spring Recruiting Kickoff Webinar</div>
+          <div class="news-desc2">ΑΚΣ alumnae from consulting, finance, and tech share how to stand out during competitive recruiting. Virtual, 7:00 PM EST. All members welcome.</div>
+        </div>
+      </div>
+      <div class="news-row">
+        <div class="news-date">
+          <div class="nd-month">Apr</div>
+          <div class="nd-day">5</div>
+        </div>
+        <div class="news-body">
+          <div class="news-tag2">Leadership · Indianapolis</div>
+          <div class="news-title2">RISE Leadership Academy — Chapter Officer Summit</div>
+          <div class="news-desc2">Three-day summit for chapter presidents and officers. JW Marriott Indianapolis, April 5–7. Registration closes March 28.</div>
+        </div>
+      </div>
+      <div class="news-row">
+        <div class="news-date">
+          <div class="nd-month">Apr</div>
+          <div class="nd-day">22</div>
+        </div>
+        <div class="news-body">
+          <div class="news-tag2">Philanthropy · National</div>
+          <div class="news-title2">ΑΚΣ Gives Day</div>
+          <div class="news-desc2">Participate in our annual day of giving. Every gift supports scholarships, leadership programming, and sisterhood initiatives nationwide.</div>
+        </div>
+      </div>
+      <div class="news-row">
+        <div class="news-date">
+          <div class="nd-month">May</div>
+          <div class="nd-day">3</div>
+        </div>
+        <div class="news-body">
+          <div class="news-tag2">Celebration · National</div>
+          <div class="news-title2">Founders Day — 102nd Anniversary</div>
+          <div class="news-desc2">Celebrate 102 years of Alpha Kappa Sigma with sisters at your local chapter. Toolkit and resources available through the member portal.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div>
+
+    <!-- SCRIPT -->
+    <div class="script-sidebar">
+      <div class="script-eyebrow">Exclusive Member Benefit</div>
+      <div class="script-badge">✦ New for 2026</div>
+      <h3>The Script™<br>Your Career Toolkit</h3>
+      <p>The writing tasks of your job search shouldn't slow you down. The Script™ handles them — so you can focus on showing up confident and ready.</p>
+      <div class="script-tool-pills">
+        <div class="script-pill">✉️ &nbsp; Cover Letter Creator</div>
+        <div class="script-pill">🤝 &nbsp; Thank-You Email Writer</div>
+        <div class="script-pill">💬 &nbsp; Interview Question Generator</div>
+        <div class="script-pill">💰 &nbsp; Compensation Benchmarking</div>
+      </div>
+      <button class="script-open-btn" onclick="document.getElementById('ts-fab').click()">
+        Open The Script™ →
+      </button>
+    </div>
+
+    <!-- MEMBER RESOURCES -->
+    <div class="sidebar-block">
+      <h3>Member Resources</h3>
+      <ul class="sidebar-links">
+        <li><a href="#">The Script™ Job Search Tools <span class="arrow">→</span></a></li>
+        <li><a href="#">Member Portal Login <span class="arrow">→</span></a></li>
+        <li><a href="#">Alumnae Network Directory <span class="arrow">→</span></a></li>
+        <li><a href="#">Chapter Locator <span class="arrow">→</span></a></li>
+        <li><a href="#">Scholarship Applications <span class="arrow">→</span></a></li>
+        <li><a href="#">RISE Leadership Academy <span class="arrow">→</span></a></li>
+      </ul>
+    </div>
+
+    <!-- PHILANTHROPY -->
+    <div class="phil-block">
+      <h3>ΑΚΣ Foundation</h3>
+      <p>Your gift funds scholarships and leadership programs for the next generation of sisters. Every contribution — at any level — makes a difference.</p>
+      <a href="#" class="btn-sage">Make a Gift →</a>
+    </div>
+
+    <!-- CHAPTER LOCATOR -->
+    <div class="sidebar-block">
+      <h3>Find Your Chapter</h3>
+      <div style="background: var(--rose-lt); border-radius: 8px; height: 120px; display:flex; align-items:center; justify-content:center; font-size:32px; margin-bottom:14px;">🗺️</div>
+      <p style="font-size:13px; color:var(--mid); margin-bottom:14px; line-height:1.6;"><strong style="color:var(--text);">248 active chapters</strong> across 160 universities nationwide.</p>
+      <a href="#" style="font-size:13px; font-weight:800; color:var(--rose); text-decoration:none;">Search by university →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<!-- PRICING -->
+<div style="background: var(--rose-lt);" id="pricing">
+<div class="pricing-section">
+  <div class="pricing-intro">
+    <div class="pricing-eyebrow">✦ Simple Pricing</div>
+    <div class="pricing-title">Priced by membership size. Not per student.</div>
+    <p class="pricing-desc">One flat monthly subscription covers your entire membership — no per-use fees, no usage caps, no surprises.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-tier">
+      <div class="tier-name">The Script™ Branded</div>
+      <div class="tier-desc">The Script™ branding on the widget. Full tool access for all members. Easy embed on your member portal.</div>
+      <hr class="tier-divider" />
+      <div class="price-bands">
+        <div class="price-band"><div class="band-label">Up to 5,000 members</div><div class="band-price">$149<span>/mo</span></div></div>
+        <div class="price-band"><div class="band-label">5,000–20,000 members</div><div class="band-price">$299<span>/mo</span></div></div>
+        <div class="price-band"><div class="band-label">20,000+ members</div><div class="band-price">$499<span>/mo</span></div></div>
+      </div>
+      <ul class="tier-features">
+        <li>All four job search tools included</li>
+        <li>Unlimited member usage</li>
+        <li>One-line embed code for your portal</li>
+        <li>The Script™ branding on widget</li>
+        <li>Email support</li>
+      </ul>
+      <a href="mailto:rob@thirdactadvisors.com?subject=The Script - ΑΚΣ Branded Inquiry" class="tier-cta primary">Get Started →</a>
+    </div>
+    <div class="pricing-tier featured">
+      <div class="pricing-badge">✦ Most Popular</div>
+      <div class="tier-name">White-Label Premium</div>
+      <div class="tier-desc">Fully branded to your organization. Members see your name, your colors, your logo — not ours.</div>
+      <hr class="tier-divider" />
+      <div class="price-bands">
+        <div class="price-band"><div class="band-label">Up to 5,000 members</div><div class="band-price">$299<span>/mo</span></div></div>
+        <div class="price-band"><div class="band-label">5,000–20,000 members</div><div class="band-price">$449<span>/mo</span></div></div>
+        <div class="price-band"><div class="band-label">20,000+ members</div><div class="band-price">$649<span>/mo</span></div></div>
+      </div>
+      <ul class="tier-features">
+        <li>All four job search tools included</li>
+        <li>Unlimited member usage</li>
+        <li>One-line embed code for your portal</li>
+        <li>Your sorority letters on widget</li>
+        <li>Custom colors &amp; logo</li>
+        <li>Priority email support</li>
+      </ul>
+      <a href="mailto:rob@thirdactadvisors.com?subject=The Script - ΑΚΣ White-Label Inquiry" class="tier-cta accent">Get Started →</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- FAB WIDGET BUTTON -->
+<button class="ts-fab" id="ts-fab" onclick="openWidget()">
+  <div class="ts-fab-dot"></div>
+  The Script™
+</button>
+
+<!-- WIDGET OVERLAY -->
+<div id="widget-overlay" onclick="closeWidget()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:300;"></div>
+
+<!-- WIDGET PANEL -->
+<div id="widget-panel" style="
+  display:none; position:fixed; top:0; right:0; height:100%; width:420px; max-width:95vw;
+  background:#fff; z-index:400; box-shadow:-8px 0 40px rgba(107,31,58,0.2);
+  overflow-y:auto; font-family:'Nunito Sans',sans-serif; flex-direction:column;">
+
+  <!-- Panel Header -->
+  <div style="background:var(--rose-d); padding:20px 24px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:10;">
+    <div>
+      <div style="font-size:9px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:2px;">ΑΚΣ Exclusive Member Benefit</div>
+      <div style="font-family:'Lora',serif; font-size:18px; font-weight:700; color:#fff;">The Script™ Career Tools</div>
+      <div style="font-size:11px; color:rgba(255,255,255,0.45); margin-top:2px;">Powered by Third Act Advisors</div>
+    </div>
+    <button onclick="closeWidget()" style="background:rgba(255,255,255,0.1); border:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center;">✕</button>
+  </div>
+
+  <!-- Tool Tabs -->
+  <div style="display:flex; border-bottom:1px solid #e8dce0; overflow-x:auto;">
+    <button class="wtab active" onclick="showTool('cl', this)" style="flex:1; padding:12px 8px; font-size:11px; font-weight:700; border:none; background:#fff; cursor:pointer; border-bottom:2px solid var(--rose); color:var(--rose-d);">✉️ Cover Letter</button>
+    <button class="wtab" onclick="showTool('ty', this)" style="flex:1; padding:12px 8px; font-size:11px; font-weight:700; border:none; background:#fff; cursor:pointer; border-bottom:2px solid transparent; color:#8a7880;">🤝 Thank-You</button>
+    <button class="wtab" onclick="showTool('iq', this)" style="flex:1; padding:12px 8px; font-size:11px; font-weight:700; border:none; background:#fff; cursor:pointer; border-bottom:2px solid transparent; color:#8a7880;">💬 Interview</button>
+    <button class="wtab" onclick="showTool('cp', this)" style="flex:1; padding:12px 8px; font-size:11px; font-weight:700; border:none; background:#fff; cursor:pointer; border-bottom:2px solid transparent; color:#8a7880;">💰 Salary</button>
+  </div>
+
+  <!-- Tool Panels -->
+  <div style="padding:24px;">
+
+    <!-- Cover Letter -->
+    <div id="wtool-cl">
+      <p style="font-size:13px; color:#5a4850; margin-bottom:16px; line-height:1.6;">Paste the job description and your resume. Get a tailored cover letter in seconds.</p>
+      <label style="font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#8a7880; display:block; margin-bottom:6px;">Job Description</label>
+      <textarea id="w-cl-job" style="width:100%; padding:10px 12px; border:1px solid #e8dce0; border-radius:8px; font-size:13px; font-family:'Nunito Sans',sans-serif; min-height:90px; resize:vertical; margin-bottom:14px;" placeholder="Paste the job description here…"></textarea>
+      <label style="font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#8a7880; display:block; margin-bottom:6px;">Your Resume / Experience</label>
+      <textarea id="w-cl-resume" style="width:100%; padding:10px 12px; border:1px solid #e8dce0; border-radius:8px; font-size:13px; font-family:'Nunito Sans',sans-serif; min-height:80px; resize:vertical; margin-bottom:14px;" placeholder="Paste your resume or background…"></textarea>
+      <button onclick="wGenerate('cl')" id="w-cl-btn" style="width:100%; padding:12px; background:var(--rose-d); color:#fff; border:none; border-radius:8px; font-size:13px; font-weight:800; cursor:pointer; font-family:'Nunito Sans',sans-serif;">Generate Cover Letter</button>
+      <div id="w-cl-loading" style="display:none; padding:12px 0; font-size:13px; color:#8a7880; display:none;">Generating…</div>
+      <div id="w-cl-output" style="display:none; margin-top:16px; background:#F9EEF2; border-left:3px solid var(--rose); border-radius:8px; padding:16px; font-size:13px; line-height:1.7; color:#1a1014;"></div>
+    </div>
+
+    <!-- Thank You -->
+    <div id="wtool-ty" style="display:none;">
+      <p style="font-size:13px; color:#5a4850; margin-bottom:16px; line-height:1.6;">A thoughtful follow-up referencing a real moment from your interview.</p>
+      <label style="font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#8a7880; display:block; margin-bottom:6px;">Role & Company</label>
+      <input id="w-ty-job" style="width:100%; padding:10px 12px; border:1px solid #e8dce0; border-radius:8px; font-size:13px; font-family:'Nunito Sans',sans-serif; margin-bottom:12px;" placeholder="e.g. Marketing Manager at Deloitte" />
+      <label style="font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#8a7880; display:block; margin-bottom:6px;">Interviewer's Name</label>
+      <input id="w-ty-name" style="width:100%; padding:10px 12px; border:1px solid #e8dce0; border-radius:8px; font-size:13px; font-family:'Nunito Sans',sans-serif; margin-bottom:12px;" placeholder="e.g. Sarah Johnson" />
+      <label style="font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#8a7880; display:block; margin-bottom:6px;">A Moment from the Interview</label>
+      <textarea id="w-ty-moment" style="width:100%; padding:10px 12px; border:1px solid #e8dce0; border-radius:8px; font-size:13px; font-family:'Nunito Sans',sans-serif; min-height:70px; resize:vertical; margin-bottom:14px;" placeholder="e.g. We discussed the team's expansion plans…"></textarea>
+      <button onclick="wGenerate('ty')" id="w-ty-btn" style="width:100%; padding:12px; background:var(--rose-d); color:#fff; border:none; border-radius:8px; font-size:13px; font-weight:800; cursor:pointer; font-family:'Nunito Sans',sans-serif;">Generate Thank-You Email</button>
+      <div id="w-ty-output" style="display:none; margin-top:16px; background:#F9EEF2; border-left:3px solid var(--rose); border-radius:8px; padding:16px; font-size:13px; line-height:1.7; color:#1a1014;"></div>
+    </div>
+
+    <!-- Interview -->
+    <div id="wtool-iq" style="display:none;">
+      <p style="font-size:13px; color:#5a4850; margin-bottom:16px; line-height:1.6;">12 likely questions grouped into 3 strategic themes, tailored to the job description.</p>
+      <label style="font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#8a7880; display:block; margin-bottom:6px;">Job Description</label>
+      <textarea id="w-iq-job" style="width:100%; padding:10px 12px; border:1px solid #e8dce0; border-radius:8px; font-size:13px; font-family:'Nunito Sans',sans-serif; min-height:110px; resize:vertical; margin-bottom:14px;" placeholder="Paste the full job description here…"></textarea>
+      <button onclick="wGenerate('iq')" id="w-iq-btn" style="width:100%; padding:12px; background:var(--rose-d); color:#fff; border:none; border-radius:8px; font-size:13px; font-weight:800; cursor:pointer; font-family:'Nunito Sans',sans-serif;">Generate Interview Questions</button>
+      <div id="w-iq-output" style="display:none; margin-top:16px; background:#F9EEF2; border-left:3px solid var(--rose); border-radius:8px; padding:16px; font-size:13px; line-height:1.7; color:#1a1014;"></div>
+    </div>
+
+    <!-- Salary -->
+    <div id="wtool-cp" style="display:none;">
+      <p style="font-size:13px; color:#5a4850; margin-bottom:16px; line-height:1.6;">Market salary ranges by role, level, and city. Know your worth before you negotiate.</p>
+      <label style="font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#8a7880; display:block; margin-bottom:6px;">Job Title</label>
+      <input id="w-cp-title" style="width:100%; padding:10px 12px; border:1px solid #e8dce0; border-radius:8px; font-size:13px; font-family:'Nunito Sans',sans-serif; margin-bottom:12px;" placeholder="e.g. Financial Analyst" />
+      <label style="font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#8a7880; display:block; margin-bottom:6px;">Industry</label>
+      <input id="w-cp-industry" style="width:100%; padding:10px 12px; border:1px solid #e8dce0; border-radius:8px; font-size:13px; font-family:'Nunito Sans',sans-serif; margin-bottom:12px;" placeholder="e.g. Finance, Technology" />
+      <label style="font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#8a7880; display:block; margin-bottom:6px;">Location</label>
+      <input id="w-cp-location" style="width:100%; padding:10px 12px; border:1px solid #e8dce0; border-radius:8px; font-size:13px; font-family:'Nunito Sans',sans-serif; margin-bottom:12px;" placeholder="e.g. Chicago, IL" />
+      <label style="font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#8a7880; display:block; margin-bottom:6px;">Experience Level</label>
+      <select id="w-cp-level" style="width:100%; padding:10px 12px; border:1px solid #e8dce0; border-radius:8px; font-size:13px; font-family:'Nunito Sans',sans-serif; margin-bottom:14px;">
+        <option>Entry Level (0–2 years)</option>
+        <option>Mid Level (3–5 years)</option>
+        <option>Senior (6+ years)</option>
+      </select>
+      <button onclick="wGenerate('cp')" id="w-cp-btn" style="width:100%; padding:12px; background:var(--rose-d); color:#fff; border:none; border-radius:8px; font-size:13px; font-weight:800; cursor:pointer; font-family:'Nunito Sans',sans-serif;">Get Salary Benchmarks</button>
+      <div id="w-cp-output" style="display:none; margin-top:16px; background:#F9EEF2; border-left:3px solid var(--rose); border-radius:8px; padding:16px; font-size:13px; line-height:1.7; color:#1a1014;"></div>
+    </div>
+
+    <!-- Copy button (shown after generation) -->
+    <button id="w-copy-btn" onclick="wCopy()" style="display:none; margin-top:12px; width:100%; padding:10px; background:#fff; border:1px solid #e8dce0; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; font-family:'Nunito Sans',sans-serif; color:#1a1014;">Copy to Clipboard</button>
+
+  </div>
+
+  <!-- Panel Footer -->
+  <div style="padding:16px 24px; border-top:1px solid #e8dce0; margin-top:auto; background:#fdf9f7;">
+    <p style="font-size:10px; color:#8a7880; text-align:center; line-height:1.5;">The Script™ is for informational purposes only.<br>Powered by <a href="https://thirdactadvisors.com" target="_blank" style="color:var(--rose); text-decoration:none;">Third Act Advisors</a></p>
+  </div>
+</div>
+
+<script>
+  // ── CSS VARIABLES FOR JS ──
+  const roseD = '#6B1F3A';
+
+  // ── WIDGET OPEN/CLOSE ──
+  function openWidget() {
+    document.getElementById('widget-panel').style.display = 'flex';
+    document.getElementById('widget-overlay').style.display = 'block';
+    document.getElementById('widget-panel').style.flexDirection = 'column';
+  }
+  function closeWidget() {
+    document.getElementById('widget-panel').style.display = 'none';
+    document.getElementById('widget-overlay').style.display = 'none';
+  }
+
+  // ── TOOL TABS ──
+  function showTool(id, btn) {
+    ['cl','ty','iq','cp'].forEach(t => {
+      document.getElementById('wtool-' + t).style.display = t === id ? 'block' : 'none';
+      document.getElementById('w-' + t + '-output').style.display = 'none';
+    });
+    document.querySelectorAll('.wtab').forEach(b => {
+      b.style.borderBottomColor = 'transparent';
+      b.style.color = '#8a7880';
+    });
+    btn.style.borderBottomColor = roseD;
+    btn.style.color = roseD;
+    document.getElementById('w-copy-btn').style.display = 'none';
+  }
+
+  // ── GENERATE ──
+  let wCurrentTool = 'cl';
+
+  async function wGenerate(tool) {
+    wCurrentTool = tool;
+    const btn = document.getElementById('w-' + tool + '-btn');
+    const output = document.getElementById('w-' + tool + '-output');
+    output.style.display = 'none';
+    document.getElementById('w-copy-btn').style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Generating…';
+
+    let prompt = '';
+    if (tool === 'cl') {
+      const job = document.getElementById('w-cl-job').value.trim();
+      const resume = document.getElementById('w-cl-resume').value.trim();
+      if (!job) { alert('Please paste the job description.'); btn.disabled = false; btn.textContent = 'Generate Cover Letter'; return; }
+      prompt = `Write a professional cover letter for this job. Keep it to 3-4 concise paragraphs, approximately 200-250 words. Be specific to the role. Do not use generic filler phrases.\n\nJob Description:\n${job}\n\nApplicant Background:\n${resume || 'Not provided — write a strong general cover letter.'}`;
+    } else if (tool === 'ty') {
+      const job = document.getElementById('w-ty-job').value.trim();
+      const name = document.getElementById('w-ty-name').value.trim();
+      const moment = document.getElementById('w-ty-moment').value.trim();
+      if (!job) { alert('Please enter the role and company.'); btn.disabled = false; btn.textContent = 'Generate Thank-You Email'; return; }
+      prompt = `Write a warm and professional thank-you email after a job interview. Keep it brief — 3 short paragraphs. Reference the specific interview moment.\n\nRole: ${job}\nInterviewer: ${name || 'the interviewer'}\nInterview moment: ${moment || 'the conversation about the role and team'}`;
+    } else if (tool === 'iq') {
+      const job = document.getElementById('w-iq-job').value.trim();
+      if (!job) { alert('Please paste the job description.'); btn.disabled = false; btn.textContent = 'Generate Interview Questions'; return; }
+      prompt = `Generate exactly 12 likely interview questions for this role, grouped into 3 themed categories of 4 questions each. Label each category clearly.\n\nJob Description:\n${job}`;
+    } else if (tool === 'cp') {
+      const title = document.getElementById('w-cp-title').value.trim();
+      const industry = document.getElementById('w-cp-industry').value.trim();
+      const location = document.getElementById('w-cp-location').value.trim();
+      const level = document.getElementById('w-cp-level').value;
+      if (!title) { alert('Please enter a job title.'); btn.disabled = false; btn.textContent = 'Get Salary Benchmarks'; return; }
+      prompt = `Provide a compensation benchmarking summary. Include base salary range, total compensation range, and 2-3 sentences of plain-language context.\n\nJob Title: ${title}\nIndustry: ${industry || 'General'}\nLocation: ${location || 'United States'}\nExperience Level: ${level}`;
+    }
+
+    try {
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          messages: [{ role: 'user', content: prompt }]
+        })
+      });
+      const data = await response.json();
+      const text = data.content[0].text;
+      output.innerHTML = text.split(/\n+/).filter(p => p.trim()).map(p => `<p style="margin-bottom:10px;">${p}</p>`).join('');
+      output.style.display = 'block';
+      document.getElementById('w-copy-btn').style.display = 'block';
+    } catch(e) {
+      alert('Something went wrong. Please try again.');
+    }
+
+    const labels = { cl: 'Generate Cover Letter', ty: 'Generate Thank-You Email', iq: 'Generate Interview Questions', cp: 'Get Salary Benchmarks' };
+    btn.disabled = false;
+    btn.textContent = labels[tool];
+  }
+
+  function wCopy() {
+    const output = document.getElementById('w-' + wCurrentTool + '-output');
+    const text = Array.from(output.querySelectorAll('p')).map(p => p.textContent).join('\n\n');
+    navigator.clipboard.writeText(text);
+    const btn = document.getElementById('w-copy-btn');
+    btn.textContent = 'Copied! ✓';
+    setTimeout(() => btn.textContent = 'Copy to Clipboard', 2000);
+  }
+</script>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="f-logo">ΑΚΣ</div>
+      <p>Alpha Kappa Sigma<br>International Headquarters</p>
+      <div class="f-addr">
+        4800 Sisterhood Drive, Suite 300<br>
+        Indianapolis, IN 46240<br>
+        (317) 555-0192 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2841464e476849435b46495c414746494406475a4f">[email&#160;protected]</a>
+      </div>
+      <div class="social-links">
+        <a href="#">📘</a>
+        <a href="#">📸</a>
+        <a href="#">💼</a>
+        <a href="#">🎵</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>About Us</h4>
+      <ul>
+        <li><a href="#">Our Mission</a></li>
+        <li><a href="#">History</a></li>
+        <li><a href="#">International Council</a></li>
+        <li><a href="#">Professional Staff</a></li>
+        <li><a href="#">Volunteer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Members</h4>
+      <ul>
+        <li><a href="#">The Script™ Tools</a></li>
+        <li><a href="#">Member Portal</a></li>
+        <li><a href="#">Chapter Locator</a></li>
+        <li><a href="#">Scholarships</a></li>
+        <li><a href="#">RISE Academy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Alumnae</h4>
+      <ul>
+        <li><a href="#">Get Involved</a></li>
+        <li><a href="#">Life Loyal</a></li>
+        <li><a href="#">Alumnae Network</a></li>
+        <li><a href="#">Make a Gift</a></li>
+        <li><a href="#">Update Info</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Alpha Kappa Sigma International. All Rights Reserved. &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Policy Against Hazing</a></div>
+    <div>Demo page for <strong style="color:rgba(255,255,255,0.5);">The Script™</strong> by <a href="https://thirdactadvisors.com" target="_blank">Third Act Advisors</a></div>
+  </div>
+</footer>
+
+<!-- THE SCRIPT WIDGET -->
+<script data-cfasync="false" src="/cd
